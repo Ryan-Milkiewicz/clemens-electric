@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getHeaderSection } from "./lib/queries";
-import { urlFor } from "@/sanity/client";
+import { urlFor } from "@/sanity/sanityImageUrl";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
@@ -11,8 +11,9 @@ export default async function Home() {
         {headerData.map((header) => (
           <div key={header._id}>
             <Image
+              key={header._id}
               style={{ objectFit: "cover", width: "100%" }}
-              src="/hero-image.webp"
+              src={urlFor(header.image).width(966).height(646).url()}
               alt="Clemens Electric Hero Image"
               width={966}
               height={646}
@@ -32,30 +33,6 @@ export default async function Home() {
           </div>
         ))}
       </section>
-      {/* <Image
-          style={{ objectFit: "cover", width: "100%" }}
-          src="/hero-image.webp"
-          alt="Clemens Electric Hero Image"
-          width={966}
-          height={646}
-          priority
-        />
-        <div
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-        />
-        <div
-          className="position-absolute top-50 start-50 translate-middle text-center"
-          style={{ color: "white" }}
-        >
-          <h1 className="fw-bold">
-            Building Your Vision, Exceeding Expectations
-          </h1>
-          <p className="text-white">
-            Your Trusted Construction & Renovation Partner
-          </p>
-        </div>
-      </section> */}
 
       <section id="about" className="container py-5">
         <div className="row">

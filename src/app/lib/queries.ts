@@ -5,7 +5,7 @@ const options = { next: { revalidate: 30 } };
 
 export async function getHeaderSection() {
   const HEADER_QUERY = `*[
-  _type == "hero-section"]{slug, headerTitle,subtitle,slug,image}`;
+  _type == "hero-section"]{_id,slug, headerTitle,subtitle,slug,image}`;
 
   const posts = await client.fetch<SanityDocument[]>(HEADER_QUERY, {}, options);
   return posts;

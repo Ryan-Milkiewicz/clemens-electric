@@ -1,14 +1,41 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import { getHeaderSection } from "./lib/queries";
+import { urlFor } from "@/sanity/client";
 
-export default function Home() {
+export default async function Home() {
+  const headerData = await getHeaderSection();
+
   return (
     <>
       <section id="home" className="position-relative">
-        <Image
+        {headerData.map((header) => (
+          <div key={header._id}>
+            <Image
+              style={{ objectFit: "cover", width: "100%" }}
+              src="/hero-image.webp"
+              alt="Clemens Electric Hero Image"
+              width={966}
+              height={646}
+              priority
+            />
+            <div
+              className="position-absolute top-0 start-0 w-100 h-100"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+            />
+            <div
+              className="position-absolute top-50 start-50 translate-middle text-center"
+              style={{ color: "white" }}
+            >
+              <h1 className="fw-bold">{header.headerTitle}</h1>
+              <p className="text-white">{header.subtitle}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+      {/* <Image
           style={{ objectFit: "cover", width: "100%" }}
           src="/hero-image.webp"
-          alt="Header Image"
+          alt="Clemens Electric Hero Image"
           width={966}
           height={646}
           priority
@@ -28,12 +55,17 @@ export default function Home() {
             Your Trusted Construction & Renovation Partner
           </p>
         </div>
-      </section>
+      </section> */}
 
       <section id="about" className="container py-5">
         <div className="row">
           <div className="col-md-6">
-            <Image src="/worker.webp" alt="worker" width={545} height={614} />
+            <Image
+              src="/worker.webp"
+              alt="Clemens Electric Worker"
+              width={545}
+              height={614}
+            />
           </div>
           <div className="col-md-6">
             <h2 className="fw-bold">
@@ -88,7 +120,7 @@ export default function Home() {
                   src="/drawing.png"
                   height={53}
                   width={53}
-                  alt="Drawing"
+                  alt="Clemens Electric Drawing"
                   style={{ objectFit: "contain" }}
                 />
                 <div className="card-body">
@@ -107,7 +139,7 @@ export default function Home() {
                   src="/tools.png"
                   height={53}
                   width={53}
-                  alt="Tools"
+                  alt="Clemens Electric Tool"
                   style={{ objectFit: "contain" }}
                 />
                 <div className="card-body">
@@ -126,7 +158,7 @@ export default function Home() {
                   src="/roof.png"
                   height={53}
                   width={53}
-                  alt="Roof"
+                  alt="Clemens Electic Roof"
                   style={{ objectFit: "contain" }}
                 />
                 <div className="card-body">
@@ -145,7 +177,7 @@ export default function Home() {
                   src="/electric.png"
                   height={53}
                   width={53}
-                  alt="Electric"
+                  alt="Clemens Electric"
                   style={{ objectFit: "contain" }}
                 />
                 <div className="card-body">
@@ -169,7 +201,7 @@ export default function Home() {
         <div className="row">
           <Image
             src="/our-work.webp"
-            alt="Our Work"
+            alt="Clemens Electric Work"
             width={1190}
             height={275}
           />

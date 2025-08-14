@@ -26,3 +26,11 @@ export async function getAboutSection() {
   );
   return aboutData;
 }
+
+export async function getServicesSection() {
+  const SERVICE_QUERY = `*[
+  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current, "icon":icon.asset._ref}}`;
+
+  const serviceData = await client.fetch(SERVICE_QUERY, {}, options);
+  return serviceData;
+}

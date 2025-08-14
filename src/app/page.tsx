@@ -1,10 +1,16 @@
 import Image from "next/image";
-import { getHeaderSection, getAboutSection } from "./lib/queries";
+import {
+  getHeaderSection,
+  getAboutSection,
+  getServicesSection,
+} from "./lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
+import { Card } from "./components/ui/Card";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
   const aboutData = await getAboutSection();
+  const [{ title, subtitle, services }] = await getServicesSection();
 
   return (
     <>
@@ -68,91 +74,22 @@ export default async function Home() {
 
       <section id="services" className="container">
         <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
-          <h2 className="fw-bold">
-            Expert Construction & Trade Solutions for Every Project
-          </h2>
-          <p className="text-muted">
-            We offer a wide range of construction and trade services for homes,
-            businesses, and industrial projects.
-          </p>
+          <h2 className="fw-bold">{title}</h2>
+          <p className="text-muted">{subtitle}</p>
         </div>
 
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
-              <div className="card p-4">
-                <Image
-                  src="/drawing.png"
-                  height={53}
-                  width={53}
-                  alt="Clemens Electric Drawing"
-                  style={{ objectFit: "contain" }}
+            {services.map((service: any) => (
+              <div className="col-md-3" key={service.slug}>
+                <Card
+                  title={service.title}
+                  slug={service.slug}
+                  description={service.description}
+                  icon={urlFor(service.icon).width(53).height(53).url()}
                 />
-                <div className="card-body">
-                  <div className="card-title h5 mb-3">General Construction</div>
-                  <div className="card-text">
-                    New builds, renovations, and extension for all construction
-                    types
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card p-4">
-                <Image
-                  src="/tools.png"
-                  height={53}
-                  width={53}
-                  alt="Clemens Electric Tool"
-                  style={{ objectFit: "contain" }}
-                />
-                <div className="card-body">
-                  <div className="card-title h5 mb-3">Carpentry & Joinery</div>
-                  <div className="card-text">
-                    5+ Years of experience with custom woodwork, framing, and
-                    installations
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card p-4">
-                <Image
-                  src="/roof.png"
-                  height={53}
-                  width={53}
-                  alt="Clemens Electic Roof"
-                  style={{ objectFit: "contain" }}
-                />
-                <div className="card-body">
-                  <div className="card-title h5 mb-3">Roofing</div>
-                  <div className="card-text">
-                    Installation, maintenance and repairs for all different roof
-                    types
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="card p-4">
-                <Image
-                  src="/electric.png"
-                  height={53}
-                  width={53}
-                  alt="Clemens Electric"
-                  style={{ objectFit: "contain" }}
-                />
-                <div className="card-body">
-                  <div className="card-title h5 mb-3">Electrical Services</div>
-                  <div className="card-text">
-                    Wiring, lighting, panel upgrades, and safety inspections
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

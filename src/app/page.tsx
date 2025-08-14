@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { getHeaderSection } from "./lib/queries";
+import { getHeaderSection, getAboutSection } from "./lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
+  const aboutData = await getAboutSection();
 
   return (
     <>
@@ -14,7 +15,7 @@ export default async function Home() {
               key={header._id}
               style={{ objectFit: "cover", width: "100%" }}
               src={urlFor(header.image).width(966).height(646).url()}
-              alt="Clemens Electric Hero Image"
+              alt={header.slug.current}
               width={966}
               height={646}
               priority
@@ -35,47 +36,34 @@ export default async function Home() {
       </section>
 
       <section id="about" className="container py-5">
-        <div className="row">
-          <div className="col-md-6">
-            <Image
-              src="/worker.webp"
-              alt="Clemens Electric Worker"
-              width={545}
-              height={614}
-            />
-          </div>
-          <div className="col-md-6">
-            <h2 className="fw-bold">
-              Committed to Quality & Customer Satisfaction
-            </h2>
-            <p className="text-muted">
-              With years of experience in the construction industry,
-              Construction And Renovation has built a reputation for excellence.
-              Our skilled team of tradesmen, engineers, and project managers
-              work together to bring your vision and dream to life, ensuring
-              every project is completed on time and within your budget
-            </p>
+        {aboutData.map((about) => (
+          <div key={about._id} className="row">
+            <div className="col-md-6">
+              <Image
+                src={urlFor(about.image).width(545).height(614).url()}
+                alt="Clemens Electric Worker"
+                width={545}
+                height={614}
+              />
+            </div>
+            <div className="col-md-6">
+              <h2 className="fw-bold">{about.title}</h2>
+              <p className="text-muted">{about.description}</p>
 
-            <h4 className="pb-3">Why Choose Us?</h4>
-            <ul className="ps-3">
-              <li className="text-muted pb-3">
-                Experienced and Certified Professionals
-              </li>
-              <li className="text-muted pb-3">
-                Attention to Detail & High-Quality Work
-              </li>
-              <li className="text-muted pb-3">
-                Transparent Pricing & No Hidden Fees
-              </li>
-              <li className="text-muted pb-3">
-                Commitment to Safety and Industry Standards
-              </li>
-            </ul>
-            <button className="btn btn-warning rounded-5">
-              Get Free Quote
-            </button>
+              <h4 className="pb-3">Why Choose Us?</h4>
+              <ul className="ps-3">
+                {about.whyChooseUs.map((listItem: string, j: number) => (
+                  <li key={j} className="text-muted pb-3">
+                    {listItem}
+                  </li>
+                ))}
+              </ul>
+              <button className="btn btn-warning rounded-5">
+                Get Free Quote
+              </button>
+            </div>
           </div>
-        </div>
+        ))}
       </section>
 
       <section id="services" className="container">

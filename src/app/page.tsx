@@ -18,10 +18,9 @@ export default async function Home() {
         {headerData.map((header) => (
           <div key={header._id}>
             <Image
-              key={header._id}
               style={{ objectFit: "cover", width: "100%" }}
               src={urlFor(header.image).width(966).height(646).url()}
-              alt={header.slug.current}
+              alt="Clemens Electric Header Image"
               width={966}
               height={646}
               priority
@@ -44,8 +43,9 @@ export default async function Home() {
       <section id="about" className="container py-5">
         {aboutData.map((about) => (
           <div key={about._id} className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 text-center">
               <Image
+                className="img-fluid"
                 src={urlFor(about.image).width(545).height(614).url()}
                 alt="Clemens Electric Worker"
                 width={545}
@@ -64,7 +64,7 @@ export default async function Home() {
                   </li>
                 ))}
               </ul>
-              <button className="btn btn-warning rounded-5">
+              <button className="btn btn-danger rounded-5">
                 Get Free Quote
               </button>
             </div>

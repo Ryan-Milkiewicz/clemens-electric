@@ -42,7 +42,7 @@ export function Navbar() {
             </li>
           </ul>
           <div className="d-flex">
-            <button className="btn rounded-5 btn-warning">Get a Quote</button>
+            <button className="btn rounded-5 btn-danger">Get a Quote</button>
           </div>
         </div>
       </div>

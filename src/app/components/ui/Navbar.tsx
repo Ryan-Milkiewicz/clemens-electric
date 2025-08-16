@@ -6,8 +6,15 @@ export function Navbar() {
   return (
     <nav className="navbar bg-body-tertiary navbar-expand-sm align-items-center">
       <div className="container">
-        <Link href="#">
-          <span className="navbar-brand mb-0 h1 fw-bold">Clemens Electric</span>
+        <Link className="navbar-brand d-flex align-items-center" href="#">
+          <Image
+            src="/clemens_electric_logo.png"
+            alt="Clemens Electric Logo"
+            height={0}
+            width={200}
+            style={{ height: "175px", width: "auto" }}
+          />
+          {/* <span className="navbar-brand mb-0 h1 fw-bold">Clemens Electric</span> */}
         </Link>
         <button
           className="navbar-toggler"

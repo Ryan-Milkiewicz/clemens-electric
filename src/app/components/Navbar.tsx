@@ -14,18 +14,19 @@ export function Navbar() {
             width={200}
             style={{ height: "175px", width: "auto" }}
           />
-          {/* <span className="navbar-brand mb-0 h1 fw-bold">Clemens Electric</span> */}
         </Link>
         <button
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
+          data-bs-target="#navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle Navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse">
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item p-4">
               <Link href="#home" className="nav-link">

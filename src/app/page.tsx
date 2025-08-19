@@ -5,7 +5,7 @@ import {
   getServicesSection,
 } from "./lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
-import { Card } from "./components/ui/Card";
+import { Card } from "./components/Card";
 
 export default async function Home() {
   const headerData = await getHeaderSection();

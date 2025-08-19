@@ -1,5 +1,10 @@
-.linkColor {
+.navLinksContainer {
+  margin-left: 10rem !important;
+}
+
+.navLinkStyle {
   color: #e21919;
+  font-weight: bold;
 }
 
 .buttonColor {

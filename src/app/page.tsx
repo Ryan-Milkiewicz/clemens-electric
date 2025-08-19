@@ -72,7 +72,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <section id="services" className="container">
+      <section id="services" className="container p-4">
         <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
           <h2 className="fw-bold">{title}</h2>
           <p className="text-muted">{subtitle}</p>
@@ -94,7 +94,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="ourWork" className="py-5">
+      {/* <section id="ourWork" className="py-5">
         <h2 className="text-center fw-bold">See Our Work in Action</h2>
         <p className="text-muted text-center">
           We take pride in every project we complete.
@@ -108,7 +108,7 @@ export default async function Home() {
             height={275}
           />
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

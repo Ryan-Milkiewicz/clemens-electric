@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./Navbar.module.css";
 
 export function Navbar() {
   return (
@@ -29,28 +30,30 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
             <li className="nav-item p-4">
-              <Link href="#home" className="nav-link">
+              <Link href="#home" className={`nav-link ${styles.linkColor}`}>
                 Home
               </Link>
             </li>
             <li className="nav-item p-4">
-              <Link href="#about" className="nav-link">
+              <Link href="#about" className={`nav-link ${styles.linkColor}`}>
                 About
               </Link>
             </li>
             <li className="nav-item p-4">
-              <Link href="#services" className="nav-link">
+              <Link href="#services" className={`nav-link ${styles.linkColor}`}>
                 Services
               </Link>
             </li>
             <li className="nav-item p-4">
-              <Link href="#ourWork" className="nav-link">
+              <Link href="#ourWork" className={`nav-link ${styles.linkColor}`}>
                 Our Work
               </Link>
             </li>
           </ul>
           <div className="d-flex">
-            <button className="btn rounded-5 btn-danger">Get a Quote</button>
+            <button className={`btn rounded-5 ${styles.buttonColor}`}>
+              Get a Quote
+            </button>
           </div>
         </div>
       </div>

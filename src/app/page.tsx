@@ -9,7 +9,6 @@ import { Card } from "./components/Card";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
-  const aboutData = await getAboutSection();
   const [{ title, subtitle, services }] = await getServicesSection();
 
   return (
@@ -40,7 +39,7 @@ export default async function Home() {
         ))}
       </section>
 
-      <section id="about" className="container py-5">
+      {/* <section id="about" className="container py-5">
         {aboutData.map((about) => (
           <div key={about._id} className="row">
             <div className="col-md-6 text-center">
@@ -70,7 +69,7 @@ export default async function Home() {
             </div>
           </div>
         ))}
-      </section>
+      </section> */}
 
       <section id="services" className="container p-4">
         <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>

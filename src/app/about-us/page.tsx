@@ -1,0 +1,30 @@
+import Image from "next/image";
+import { urlFor } from "@/sanity/sanityImageUrl";
+import { getAboutSection } from "../lib/queries";
+import { PortableText } from "@portabletext/react";
+
+export default async function Page() {
+  const aboutData = await getAboutSection();
+  return (
+    <section id="about" className="container py-5">
+      {aboutData.map((about) => (
+        <div key={about._id} className="row">
+          <div className="col-md-6 text-center">
+            <Image
+              className="img-fluid"
+              src={urlFor(about.image).width(545).height(614).url()}
+              alt="Clemens Electric Worker"
+              width={545}
+              height={614}
+            />
+          </div>
+          <div className="col-md-6">
+            <h2 className="fw-bold">{about.title}</h2>
+            <PortableText value={about.description} />
+            <button className="btn btn-danger rounded-5">Get Free Quote</button>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}

@@ -30,18 +30,21 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav d-flex ms-auto">
             <li className="nav-item px-4 py-2">
-              <Link href="#home" className={`nav-link ${styles.navLinkStyle}`}>
+              <Link href="/" className={`nav-link ${styles.navLinkStyle}`}>
                 Home
               </Link>
             </li>
             <li className="nav-item px-4 py-2">
-              <Link href="#about" className={`nav-link ${styles.navLinkStyle}`}>
+              <Link
+                href="/about-us"
+                className={`nav-link ${styles.navLinkStyle}`}
+              >
                 About
               </Link>
             </li>
             <li className="nav-item px-4 py-2">
               <Link
-                href="#services"
+                href="/services"
                 className={`nav-link ${styles.navLinkStyle}`}
               >
                 Services
@@ -49,7 +52,7 @@ export function Navbar() {
             </li>
             <li className="nav-item px-4 py-2">
               <Link
-                href="#markets"
+                href="/markets"
                 className={`nav-link ${styles.navLinkStyle}`}
               >
                 Markets

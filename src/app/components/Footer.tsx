@@ -27,7 +27,7 @@ export function Footer() {
                 />
               </span>
               <p className="text-white mb-0">
-                52 First Dyke Road, Averill Park, NY 12018
+                54 First Dyke Road, Unit 2 Averill Park, NY 12018
               </p>
             </div>
 
@@ -43,7 +43,7 @@ export function Footer() {
                   alt="Contact Us"
                 />
               </span>
-              <p className="text-white mb-0">+0 123 456 678</p>
+              <p className="text-white mb-0">518-617-1016</p>
             </div>
           </div>
         </div>

@@ -1,15 +1,9 @@
 import Image from "next/image";
-import {
-  getHeaderSection,
-  getAboutSection,
-  getServicesSection,
-} from "./lib/queries";
+import { getHeaderSection } from "./lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
-import { Card } from "./components/Card";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
-  const [{ title, subtitle, services }] = await getServicesSection();
 
   return (
     <>
@@ -39,39 +33,7 @@ export default async function Home() {
         ))}
       </section>
 
-      {/* <section id="about" className="container py-5">
-        {aboutData.map((about) => (
-          <div key={about._id} className="row">
-            <div className="col-md-6 text-center">
-              <Image
-                className="img-fluid"
-                src={urlFor(about.image).width(545).height(614).url()}
-                alt="Clemens Electric Worker"
-                width={545}
-                height={614}
-              />
-            </div>
-            <div className="col-md-6">
-              <h2 className="fw-bold">{about.title}</h2>
-              <p className="text-muted">{about.description}</p>
-
-              <h4 className="pb-3">Why Choose Us?</h4>
-              <ul className="ps-3">
-                {about.whyChooseUs.map((listItem: string, j: number) => (
-                  <li key={j} className="text-muted pb-3">
-                    {listItem}
-                  </li>
-                ))}
-              </ul>
-              <button className="btn btn-danger rounded-5">
-                Get Free Quote
-              </button>
-            </div>
-          </div>
-        ))}
-      </section> */}
-
-      <section id="services" className="container p-4">
+      {/* <section id="services" className="container p-4">
         <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
           <h2 className="fw-bold">{title}</h2>
           <p className="text-muted">{subtitle}</p>
@@ -91,7 +53,7 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section id="ourWork" className="py-5">
         <h2 className="text-center fw-bold">See Our Work in Action</h2>

@@ -21,7 +21,7 @@ export default async function Page() {
           <div className="col-md-6">
             <h2 className="fw-bold">{about.title}</h2>
             <PortableText value={about.description} />
-            <button className="btn btn-danger rounded-5">Get Free Quote</button>
+            {/* <button className="btn btn-danger rounded-5">Get Free Quote</button> */}
           </div>
         </div>
       ))}

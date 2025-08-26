@@ -17,7 +17,7 @@ export async function getHeaderSection() {
 
 export async function getAboutSection() {
   const ABOUT_QUERY = `*[
-  _type == "about-section"]{_id, title, description, whyChooseUs, image}`;
+  _type == "about-section"]{_id, title, description, image}`;
 
   const aboutData = await client.fetch<SanityDocument[]>(
     ABOUT_QUERY,

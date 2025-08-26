@@ -7,7 +7,7 @@ export function Navbar() {
   return (
     <nav className="navbar bg-body-tertiary navbar-expand-sm ">
       <div className="container">
-        <Link className="navbar-brand d-flex align-items-center" href="#">
+        <Link className="navbar-brand d-flex align-items-center" href="/">
           <Image
             src="/clemens-electric-logo.png"
             alt="Clemens Electric Logo"

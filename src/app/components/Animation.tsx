@@ -8,12 +8,14 @@ export default function AnimatedSection({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const lastScrollY = useRef(window.scrollY);
+  const lastScrollY = useRef(0); // initialize to 0 instead of window.scrollY
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    lastScrollY.current = window.scrollY; // safe now inside useEffect
 
     const onScroll = () => {
       const rect = el.getBoundingClientRect();
@@ -36,6 +38,7 @@ export default function AnimatedSection({
 
     window.addEventListener("scroll", onScroll);
     onScroll(); // trigger on mount
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

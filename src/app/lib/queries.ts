@@ -29,8 +29,16 @@ export async function getAboutSection() {
 
 export async function getServicesSection() {
   const SERVICE_QUERY = `*[
-  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current, "icon":icon.asset._ref}}`;
+  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current}}`;
 
   const serviceData = await client.fetch(SERVICE_QUERY, {}, options);
   return serviceData;
+}
+
+export async function getMarketSection() {
+  const MARKET_QUERY = `*[
+  _type == "market-section"]{_id, title, subtitle, markets[]->{title, description, "slug":slug.current, image}}`;
+
+  const marketData = await client.fetch(MARKET_QUERY, {}, options);
+  return marketData;
 }

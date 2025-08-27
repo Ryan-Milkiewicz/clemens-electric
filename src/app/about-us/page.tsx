@@ -6,7 +6,7 @@ import { PortableText } from "@portabletext/react";
 export default async function Page() {
   const aboutData = await getAboutSection();
   return (
-    <section id="about" className="container py-5">
+    <section className="container py-5">
       {aboutData.map((about) => (
         <div key={about._id} className="row">
           <div className="col-md-6 text-center">

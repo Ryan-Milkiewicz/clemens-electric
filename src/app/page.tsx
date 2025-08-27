@@ -32,44 +32,6 @@ export default async function Home() {
           </div>
         ))}
       </section>
-
-      {/* <section id="services" className="container p-4">
-        <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
-          <h2 className="fw-bold">{title}</h2>
-          <p className="text-muted">{subtitle}</p>
-        </div>
-
-        <div className="container">
-          <div className="row">
-            {services.map((service: any) => (
-              <div className="col-md-3" key={service.slug}>
-                <Card
-                  title={service.title}
-                  slug={service.slug}
-                  description={service.description}
-                  icon={urlFor(service.icon).width(53).height(53).url()}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section id="ourWork" className="py-5">
-        <h2 className="text-center fw-bold">See Our Work in Action</h2>
-        <p className="text-muted text-center">
-          We take pride in every project we complete.
-        </p>
-
-        <div className="row">
-          <Image
-            src="/our-work.webp"
-            alt="Clemens Electric Work"
-            width={1190}
-            height={275}
-          />
-        </div>
-      </section> */}
     </>
   );
 }

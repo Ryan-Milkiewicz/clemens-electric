@@ -8,7 +8,7 @@ export default async function Page() {
   const [{ title, subtitle, services }] = await getServicesSection();
 
   return (
-    <section id="services" className="container p-4">
+    <section className="container py-5">
       <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
         <h2 className="fw-bold">{title}</h2>
         <p className="text-muted">{subtitle}</p>

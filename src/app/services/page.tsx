@@ -1,7 +1,4 @@
-import Image from "next/image";
-import { urlFor } from "@/sanity/sanityImageUrl";
 import { getServicesSection } from "../lib/queries";
-import { PortableText } from "@portabletext/react";
 import { Card } from "../components/Card";
 
 export default async function Page() {
@@ -22,7 +19,6 @@ export default async function Page() {
                 title={service.title}
                 slug={service.slug}
                 description={service.description}
-                // icon={urlFor(service.icon).width(53).height(53).url()}
               />
             </div>
           ))}

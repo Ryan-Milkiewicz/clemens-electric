@@ -13,7 +13,7 @@ export function Card({
 }) {
   return (
     <div className="card p- h-100">
-      <div className="d-flex mb-3 p-2">
+      <div className="d-flex p-2">
         <Icon size={32} slug={slug} />
       </div>
       <div className="card-body">

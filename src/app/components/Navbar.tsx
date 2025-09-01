@@ -58,19 +58,21 @@ export function Navbar() {
                 Markets
               </Link>
             </li>
-            <li className="nav-item px-4 py-2">
+            {/* <li className="nav-item px-4 py-2">
               <Link
                 href="#contact"
                 className={`nav-link ${styles.navLinkStyle}`}
               >
                 Contact
               </Link>
-            </li>
+            </li> */}
           </ul>
           <div className="ms-3">
-            <button className={`btn rounded-5 ${styles.buttonColor}`}>
-              Get a Quote
-            </button>
+            <Link href="/contact">
+              <button className={`btn rounded-5 ${styles.buttonColor}`}>
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </div>

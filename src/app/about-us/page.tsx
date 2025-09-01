@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
-import { getAboutSection } from "../lib/queries";
+import { getAboutSection } from "../../lib/queries";
 import { PortableText } from "@portabletext/react";
 
 export default async function Page() {
@@ -13,7 +13,7 @@ export default async function Page() {
             <Image
               className="img-fluid"
               src={urlFor(about.image).width(545).height(614).url()}
-              alt="Clemens Electric Worker"
+              alt={about.altText}
               width={545}
               height={614}
             />

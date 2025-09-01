@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
-import { getMarketSection } from "../lib/queries";
+import { getMarketSection } from "../../lib/queries";
 import { PortableText } from "@portabletext/react";
 import styles from "./markets.module.css";
 import AnimatedSection from "../components/Animation";
@@ -24,7 +24,7 @@ export default async function Page() {
                   <Image
                     className="img-fluid"
                     src={urlFor(market.image).width(555).height(333).url()}
-                    alt="Clemens Electric"
+                    alt={market.altText}
                     width={555}
                     height={333}
                   />

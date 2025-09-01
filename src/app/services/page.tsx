@@ -1,4 +1,4 @@
-import { getServicesSection } from "../lib/queries";
+import { getServicesSection } from "../../lib/queries";
 import { Card } from "../components/Card";
 
 export default async function Page() {

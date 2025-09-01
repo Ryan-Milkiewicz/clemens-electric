@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getHeaderSection } from "./lib/queries";
+import { getHeaderSection } from "../lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 
 export default async function Home() {
@@ -13,7 +13,7 @@ export default async function Home() {
             <Image
               style={{ objectFit: "cover", width: "100%" }}
               src={urlFor(header.image).width(966).height(646).url()}
-              alt="Clemens Electric Header Image"
+              alt={header.altText}
               width={966}
               height={646}
               priority

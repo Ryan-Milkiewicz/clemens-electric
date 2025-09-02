@@ -42,3 +42,11 @@ export async function getMarketSection() {
   const marketData = await client.fetch(MARKET_QUERY, {}, options);
   return marketData;
 }
+
+export async function getFAQSection() {
+  const FAQ_Query = `*[
+  _type == "FAQ-section"]{_id, title, question[]->{question, answer, category[0]->{category, "slug":slug.current}}}`;
+
+  const faqData = await client.fetch(FAQ_Query, {}, options);
+  return faqData;
+}

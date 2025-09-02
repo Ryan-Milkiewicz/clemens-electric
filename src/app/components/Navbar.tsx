@@ -34,14 +34,43 @@ export function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item px-4 py-2">
+            <li className="nav-item dropdown px-4 py-2">
+              <a
+                className={`nav-link dropdown-toggle ${styles.navLinkStyle}`}
+                href="/about-us"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link
+                    href="/about-us"
+                    className={`dropdown-item ${styles.navLinkStyle}`}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about-us/faq"
+                    className={`dropdown-item ${styles.navLinkStyle}`}
+                  >
+                    FAQ
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            {/* <li className="nav-item px-4 py-2">
               <Link
                 href="/about-us"
                 className={`nav-link ${styles.navLinkStyle}`}
               >
                 About
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item px-4 py-2">
               <Link
                 href="/services"

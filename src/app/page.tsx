@@ -51,7 +51,7 @@ export default async function Home() {
                 <BlogCard
                   title={blog.title}
                   slug={blog.slug}
-                  alt={blog.coverImage.alt}
+                  //alt={blog.coverImage.alt}
                   excerpt={blog.excerpt}
                   date={blog.date}
                   image={blog.coverImage}

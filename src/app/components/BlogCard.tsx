@@ -7,14 +7,14 @@ import styles from "./BlogCard.module.css";
 export function BlogCard({
   title,
   slug,
-  alt,
+  //alt,
   excerpt,
   date,
   image,
 }: {
   title: string;
   slug: string;
-  alt: string;
+  //  alt: string;
   excerpt: string;
   date: string;
   image: string;
@@ -25,7 +25,7 @@ export function BlogCard({
       <div className={styles.imageWrapper}>
         <Image
           src={urlFor(image).height(200).url()}
-          alt={alt}
+          alt="Clemens Electric"
           fill
           style={{ objectFit: "cover" }}
           priority

@@ -1,13 +1,14 @@
 import Image from "next/image";
-import { getHeaderSection } from "../lib/queries";
+import { getHeaderSection, getBlogPosts } from "../lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
+import { BlogCard } from "./components/BlogCard";
 
 export default async function Home() {
   const headerData = await getHeaderSection();
-
+  const blogData = await getBlogPosts();
   return (
     <>
-      <section id="home" className="position-relative">
+      <section className="position-relative">
         {headerData.map((header) => (
           <div key={header._id}>
             <Image
@@ -31,6 +32,34 @@ export default async function Home() {
             </div>
           </div>
         ))}
+      </section>
+      <section className="container py-5">
+        <h2 className="fw-bold mb-5 text-center">
+          <span className="redUnderline">Latest Blog Posts</span>
+        </h2>
+        <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          {blogData.map(
+            (blog: {
+              title: string;
+              slug: string;
+              alt: string;
+              excerpt: string;
+              date: string;
+              coverImage: string;
+            }) => (
+              <div className="col" key={blog.slug}>
+                <BlogCard
+                  title={blog.title}
+                  slug={blog.slug}
+                  alt={blog.coverImage.alt}
+                  excerpt={blog.excerpt}
+                  date={blog.date}
+                  image={blog.coverImage}
+                />
+              </div>
+            )
+          )}
+        </div>
       </section>
     </>
   );

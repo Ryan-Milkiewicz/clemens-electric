@@ -13,7 +13,9 @@ export default async function Page() {
 
   return (
     <section className="container py-5">
-      <h2 className="text-center mb-5">{title}</h2>
+      <h2 className="text-center mb-5">
+        <span className="redUnderline">{title}</span>
+      </h2>
       {Object.entries(categories).map(([catName, questions]: any, catIndex) => (
         <div key={catIndex} className="mb-4">
           <h3 className="mb-3">{catName}</h3>

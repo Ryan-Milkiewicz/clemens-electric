@@ -3,6 +3,14 @@
   transition: color 0.2s ease-in-out;
 }
 
+.redUnderline {
+  display: inline-block;
+  text-align: center;
+  border-bottom: 2px solid #e21919;
+  padding-bottom: 2px;
+  margin: 0 auto;
+}
+
 .nav-link:hover {
   color: black;
 }
@@ -18,12 +26,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-} */
 
 a {
   color: inherit;

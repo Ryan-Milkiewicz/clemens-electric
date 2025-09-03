@@ -50,3 +50,11 @@ export async function getFAQSection() {
   const faqData = await client.fetch(FAQ_Query, {}, options);
   return faqData;
 }
+
+export async function getBlogPosts() {
+  const BLOG_QUERY = `*[
+  _type == "post"]| order(date desc){_id, title, "slug":slug.current, excerpt, date, content, coverImage}[0...3]`;
+
+  const blogData = await client.fetch(BLOG_QUERY, {}, options);
+  return blogData;
+}

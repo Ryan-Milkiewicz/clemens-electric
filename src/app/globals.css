@@ -11,6 +11,16 @@
   margin: 0 auto;
 }
 
+.buttonColor {
+  background-color: #e21919;
+  color: white;
+}
+
+.alternateButtonColor {
+  background-color: white;
+  color: #e21919;
+}
+
 .nav-link:hover {
   color: black;
 }

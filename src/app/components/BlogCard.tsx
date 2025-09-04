@@ -3,6 +3,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import DateComponent from "./Date";
 import styles from "./BlogCard.module.css";
+import Link from "next/link";
 
 export function BlogCard({
   title,
@@ -14,12 +15,11 @@ export function BlogCard({
 }: {
   title: string;
   slug: string;
-  //  alt: string;
+  //alt: string;
   excerpt: string;
   date: string;
   image: string;
 }) {
-  console.log(image);
   return (
     <div className="card h-100">
       <div className={styles.imageWrapper}>
@@ -36,9 +36,13 @@ export function BlogCard({
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{excerpt}</p>
         <div className="mt-auto">
-          <a href="#" className="w-100" style={{ color: "#e21919" }}>
+          <Link
+            href={`/blog/${slug}`}
+            className="w-100"
+            style={{ color: "#e21919" }}
+          >
             Continue reading this post
-          </a>
+          </Link>
         </div>
       </div>
 

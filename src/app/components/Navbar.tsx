@@ -98,9 +98,7 @@ export function Navbar() {
           </ul>
           <div className="ms-3">
             <Link href="/contact">
-              <button className={`btn rounded-5 ${styles.buttonColor}`}>
-                Contact Us
-              </button>
+              <button className="btn rounded-5 buttonColor">Contact Us</button>
             </Link>
           </div>
         </div>

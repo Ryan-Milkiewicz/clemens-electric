@@ -53,8 +53,15 @@ export async function getFAQSection() {
 
 export async function getBlogPosts() {
   const BLOG_QUERY = `*[
-  _type == "post"]| order(date desc){_id, title, "slug":slug.current, excerpt, date, content, coverImage}[0...3]`;
+  _type == "post"]| order(date desc){_id, title, "slug":slug.current, excerpt, date, coverImage}[0...3]`;
 
   const blogData = await client.fetch(BLOG_QUERY, {}, options);
   return blogData;
+}
+
+export async function getBlogPost(slug: string) {
+  const BLOG_QUERY = `*[_type == 'post' && slug.current =='${slug}']{ _id, title, "slug":slug.current, coverImage, content, date }`;
+
+  const post = await client.fetch(BLOG_QUERY, {}, options);
+  return post;
 }

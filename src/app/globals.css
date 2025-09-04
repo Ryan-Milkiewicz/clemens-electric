@@ -21,6 +21,14 @@
   color: #e21919;
 }
 
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  /* height: 200px; */
+  overflow: hidden;
+}
+
 .nav-link:hover {
   color: black;
 }

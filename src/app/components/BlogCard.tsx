@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import DateComponent from "./Date";
-import styles from "./BlogCard.module.css";
 import Link from "next/link";
 
 export function BlogCard({
@@ -22,12 +21,13 @@ export function BlogCard({
 }) {
   return (
     <div className="card h-100">
-      <div className={styles.imageWrapper}>
+      <div className="imageWrapper">
         <Image
-          src={urlFor(image).height(200).url()}
+          src={urlFor(image).url()}
           alt="Clemens Electric"
           fill
           style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, 400px"
           priority
         />
       </div>

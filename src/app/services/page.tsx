@@ -1,5 +1,5 @@
 import { getServicesSection } from "../../lib/queries";
-import { Card } from "../components/Card";
+import { ServiceCard } from "../components/ServiceCard";
 
 export default async function Page() {
   const [{ title, subtitle, services }] = await getServicesSection();
@@ -10,18 +10,24 @@ export default async function Page() {
         <h2 className="fw-bold redUnderline">{title}</h2>
         <p className="pt-3 text-muted">{subtitle}</p>
       </div>
-
       <div className="container">
-        <div className="row">
-          {services.map((service: any) => (
-            <div className="col-md-6 g-4" key={service.slug}>
-              <Card
-                title={service.title}
-                slug={service.slug}
-                description={service.description}
-              />
-            </div>
-          ))}
+        <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          {services.map(
+            (service: {
+              title: string;
+              slug: string;
+              description: string;
+              image: string;
+            }) => (
+              <div className="col" key={service.slug}>
+                <ServiceCard
+                  title={service.title}
+                  description={service.description}
+                  image={service.image}
+                />
+              </div>
+            )
+          )}
         </div>
       </div>
     </section>

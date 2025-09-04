@@ -29,7 +29,7 @@ export async function getAboutSection() {
 
 export async function getServicesSection() {
   const SERVICE_QUERY = `*[
-  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current}}`;
+  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current, image}}`;
 
   const serviceData = await client.fetch(SERVICE_QUERY, {}, options);
   return serviceData;

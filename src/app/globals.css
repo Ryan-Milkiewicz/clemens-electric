@@ -19,6 +19,12 @@
 .alternateButtonColor {
   background-color: white;
   color: #e21919;
+  border: 5px solid transparent; /* keeps size consistent */
+  transition: all 0.3s ease; /* smooth animation */
+}
+
+.alternateButtonColor:hover {
+  border-color: #e21919;
 }
 
 .imageWrapper {

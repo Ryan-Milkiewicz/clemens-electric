@@ -65,3 +65,10 @@ export async function getBlogPost(slug: string) {
   const post = await client.fetch(BLOG_QUERY, {}, options);
   return post;
 }
+
+export async function getAllBlogPosts() {
+  const BLOG_QUERY = `*[_type == 'post']{ _id, title, excerpt, "slug":slug.current, date }`;
+
+  const post = await client.fetch(BLOG_QUERY, {}, options);
+  return post;
+}

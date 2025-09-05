@@ -23,13 +23,19 @@ export default async function Page({
         <DateComponent dateString={post[0].date} />
       </h6>
       <div>
-        <Image
-          src={urlFor(post[0].coverImage).width(553).height(252).url()}
-          alt={post[0].coverImage.alt}
-          width={553}
-          height={252}
-          className="float-start me-3 mb-3 rounded shadow-sm"
-        />
+        <div
+          className="w-100 mb-3 me-md-3 float-md-start rounded shadow-sm"
+          style={{ maxWidth: "553px" }}
+        >
+          <Image
+            src={urlFor(post[0].coverImage).width(553).height(252).url()}
+            alt={post[0].coverImage.alt}
+            width={553}
+            height={252}
+            className="rounded shadow-sm"
+            style={{ height: "auto", width: "100%" }}
+          />
+        </div>
         <PortableText value={post[0].content} />
 
         <Link href="/contact">

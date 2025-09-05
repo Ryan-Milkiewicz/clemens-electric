@@ -1,25 +1,16 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import { Services } from "@/lib/types";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { PortableText } from "@portabletext/react";
-import Icon from "./Icon";
 
-export function ServiceCard({
-  title,
-  description,
-  image,
-}: {
-  title: string;
-  description: any;
-  image: string;
-}) {
+export function ServiceCard({ service }: { service: Services }) {
   return (
     <div className="card h-100">
       <div className="imageWrapper">
         <Image
-          src={urlFor(image).url()}
-          alt="Clemens Electric"
+          src={urlFor(service.image).url()}
+          alt={service.image.alt}
           fill
           style={{ objectFit: "cover" }}
           sizes="(max-width: 768px) 100vw, 400px"
@@ -28,9 +19,9 @@ export function ServiceCard({
       </div>
 
       <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{title}</h5>
+        <h5 className="card-title">{service.title}</h5>
         <div className="card-text">
-          <PortableText value={description} />
+          <PortableText value={service.description} />
         </div>
       </div>
     </div>

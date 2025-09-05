@@ -2,7 +2,7 @@ import { getServicesSection } from "../../lib/queries";
 import { ServiceCard } from "../components/ServiceCard";
 
 export default async function Page() {
-  const [{ title, subtitle, services }] = await getServicesSection();
+  const { _id, title, subtitle, services } = await getServicesSection();
 
   return (
     <section className="container py-5">
@@ -12,22 +12,11 @@ export default async function Page() {
       </div>
       <div className="container">
         <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-          {services.map(
-            (service: {
-              title: string;
-              slug: string;
-              description: string;
-              image: string;
-            }) => (
-              <div className="col" key={service.slug}>
-                <ServiceCard
-                  title={service.title}
-                  description={service.description}
-                  image={service.image}
-                />
-              </div>
-            )
-          )}
+          {services.map((service) => (
+            <div className="col" key={service.slug}>
+              <ServiceCard service={service} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

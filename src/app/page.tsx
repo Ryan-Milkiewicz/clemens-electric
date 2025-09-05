@@ -2,36 +2,35 @@ import Image from "next/image";
 import { getHeaderSection, getBlogPosts } from "../lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { BlogCard } from "./components/BlogCard";
+import { HeroSection } from "@/lib/types";
 
 export default async function Home() {
-  const headerData = await getHeaderSection();
+  const { _id, headerTitle, altText, image } = await getHeaderSection();
   const blogData = await getBlogPosts();
+
   return (
     <>
       <section className="position-relative">
-        {headerData.map((header) => (
-          <div key={header._id}>
-            <Image
-              style={{ objectFit: "cover", width: "100%" }}
-              src={urlFor(header.image).width(966).height(646).url()}
-              alt={header.altText}
-              width={966}
-              height={646}
-              priority
-            />
-            <div
-              className="position-absolute top-0 start-0 w-100 h-100"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-            />
-            <div
-              className="position-absolute top-50 start-50 translate-middle text-center"
-              style={{ color: "white" }}
-            >
-              <h1 className="fw-bold">{header.headerTitle}</h1>
-              <p className="text-white">{header.subtitle}</p>
-            </div>
+        <div key={_id}>
+          <Image
+            style={{ objectFit: "cover", width: "100%" }}
+            src={urlFor(image).width(966).height(646).url()}
+            alt={altText}
+            width={966}
+            height={646}
+            priority
+          />
+          <div
+            className="position-absolute top-0 start-0 w-100 h-100"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+          />
+          <div
+            className="position-absolute top-50 start-50 translate-middle text-center"
+            style={{ color: "white" }}
+          >
+            <h1 className="fw-bold">{headerTitle}</h1>
           </div>
-        ))}
+        </div>
       </section>
       <section className="container py-5">
         <h2 className="fw-bold mb-5 text-center">

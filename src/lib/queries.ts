@@ -1,38 +1,19 @@
-import { type SanityDocument } from "next-sanity";
 import { client } from "@/sanity/client";
+import { HeroSection, AboutSection, ServiceSection } from "./types";
+import { HERO_QUERY, ABOUT_QUERY, SERVICE_QUERY } from "@/sanity/queries";
 
 const options = { next: { revalidate: 30 } };
 
 export async function getHeaderSection() {
-  const HEADER_QUERY = `*[
-  _type == "hero-section"]{_id, headerTitle,altText,image}`;
-
-  const headerData = await client.fetch<SanityDocument[]>(
-    HEADER_QUERY,
-    {},
-    options
-  );
-  return headerData;
+  return await client.fetch<HeroSection>(HERO_QUERY, {}, options);
 }
 
 export async function getAboutSection() {
-  const ABOUT_QUERY = `*[
-  _type == "about-section"]{_id, title, altText, description, image}`;
-
-  const aboutData = await client.fetch<SanityDocument[]>(
-    ABOUT_QUERY,
-    {},
-    options
-  );
-  return aboutData;
+  return await client.fetch<AboutSection>(ABOUT_QUERY, {}, options);
 }
 
 export async function getServicesSection() {
-  const SERVICE_QUERY = `*[
-  _type == "services-section"]{_id, title, subtitle, services[]->{title, description, "slug":slug.current, image}}`;
-
-  const serviceData = await client.fetch(SERVICE_QUERY, {}, options);
-  return serviceData;
+  return await client.fetch<ServiceSection>(SERVICE_QUERY, {}, options);
 }
 
 export async function getMarketSection() {

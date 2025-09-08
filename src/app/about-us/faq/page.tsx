@@ -1,10 +1,11 @@
 import { getFAQSection } from "@/lib/queries";
+import { Question } from "@/lib/types";
 
 export default async function Page() {
-  const [{ title, question }] = await getFAQSection();
+  const { _id, title, question } = await getFAQSection();
 
   // Group questions by category name
-  const categories = question.reduce((acc: any, q: any) => {
+  const categories: Question = question.reduce((acc: any, q: any) => {
     const cat = q.category?.category || "General";
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(q);

@@ -18,3 +18,8 @@ export const MARKET_QUERY = defineQuery(
   `*[
   _type == "market-section"][0]{_id, title, subtitle, markets[]->{title, description, altText, "slug":slug.current, image}}`
 );
+
+export const FAQ_Query = defineQuery(
+  `*[
+  _type == "FAQ-section"][0]{_id, title, question[]->{question, answer, category[0]->{category, "slug":slug.current}}}`
+);

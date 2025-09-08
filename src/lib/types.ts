@@ -30,6 +30,12 @@ export interface MarketSection {
   markets: Markets[];
 }
 
+export interface FAQSection {
+  _id: string;
+  title: string;
+  question: Question[];
+}
+
 export interface Services {
   slug: string;
   title: string;
@@ -42,6 +48,17 @@ export interface Markets {
   title: string;
   description: PortableTextBlock[];
   image: CustomImage;
+}
+
+export interface Question {
+  question: string;
+  answer: string;
+  category: Category;
+}
+
+export interface Category {
+  slug: string;
+  category: string;
 }
 
 export interface CustomImage extends Image {

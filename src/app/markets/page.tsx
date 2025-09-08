@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
-import { getMarketSection } from "../../lib/queries";
+import { getMarketsSection } from "@/lib/queries";
 import { PortableText } from "@portabletext/react";
 import styles from "./markets.module.css";
 import AnimatedSection from "../components/Animation";
 
 export default async function Page() {
-  const [{ title, subtitle, markets }] = await getMarketSection();
+  const { _id, title, subtitle, markets } = await getMarketsSection();
 
   return (
     <section className="container py-5">

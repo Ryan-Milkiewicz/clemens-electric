@@ -13,3 +13,8 @@ export const SERVICE_QUERY = defineQuery(
   `*[
   _type == "services-section"][0]{_id, title, subtitle, services[]->{title, description, "slug":slug.current, image}}`
 );
+
+export const MARKET_QUERY = defineQuery(
+  `*[
+  _type == "market-section"][0]{_id, title, subtitle, markets[]->{title, description, altText, "slug":slug.current, image}}`
+);

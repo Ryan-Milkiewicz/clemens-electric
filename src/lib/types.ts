@@ -23,7 +23,21 @@ export interface ServiceSection {
   services: Services[];
 }
 
+export interface MarketSection {
+  _id: string;
+  title: string;
+  subtitle: string;
+  markets: Markets[];
+}
+
 export interface Services {
+  slug: string;
+  title: string;
+  description: PortableTextBlock[];
+  image: CustomImage;
+}
+
+export interface Markets {
   slug: string;
   title: string;
   description: PortableTextBlock[];

@@ -1,6 +1,16 @@
 import { client } from "@/sanity/client";
-import { HeroSection, AboutSection, ServiceSection } from "./types";
-import { HERO_QUERY, ABOUT_QUERY, SERVICE_QUERY } from "@/sanity/queries";
+import {
+  HeroSection,
+  AboutSection,
+  ServiceSection,
+  MarketSection,
+} from "./types";
+import {
+  HERO_QUERY,
+  ABOUT_QUERY,
+  SERVICE_QUERY,
+  MARKET_QUERY,
+} from "@/sanity/queries";
 
 const options = { next: { revalidate: 30 } };
 
@@ -16,12 +26,8 @@ export async function getServicesSection() {
   return await client.fetch<ServiceSection>(SERVICE_QUERY, {}, options);
 }
 
-export async function getMarketSection() {
-  const MARKET_QUERY = `*[
-  _type == "market-section"]{_id, title, subtitle, markets[]->{title, description, altText, "slug":slug.current, image}}`;
-
-  const marketData = await client.fetch(MARKET_QUERY, {}, options);
-  return marketData;
+export async function getMarketsSection() {
+  return await client.fetch<MarketSection>(MARKET_QUERY, {}, options);
 }
 
 export async function getFAQSection() {

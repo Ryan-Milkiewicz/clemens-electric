@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { getHeaderSection, getBlogPosts } from "../lib/queries";
+import { getHeaderSection, getTop3BlogPosts } from "../lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { BlogCard } from "./components/BlogCard";
-import { HeroSection } from "@/lib/types";
+import { Post } from "@/lib/types";
 
 export default async function Home() {
   const { _id, headerTitle, altText, image } = await getHeaderSection();
-  const blogData = await getBlogPosts();
+  const blogData = await getTop3BlogPosts();
 
   return (
     <>
@@ -37,27 +37,17 @@ export default async function Home() {
           <span className="redUnderline">Latest Blog Posts</span>
         </h2>
         <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-          {blogData.map(
-            (blog: {
-              title: string;
-              slug: string;
-              alt: string;
-              excerpt: string;
-              date: string;
-              coverImage: string;
-            }) => (
-              <div className="col" key={blog.slug}>
-                <BlogCard
-                  title={blog.title}
-                  slug={blog.slug}
-                  //alt={blog.coverImage.alt}
-                  excerpt={blog.excerpt}
-                  date={blog.date}
-                  image={blog.coverImage}
-                />
-              </div>
-            )
-          )}
+          {blogData.map((blog: Post) => (
+            <div className="col" key={blog.slug}>
+              <BlogCard
+                title={blog.title}
+                slug={blog.slug}
+                excerpt={blog.excerpt}
+                date={blog.date.toString()}
+                image={blog.coverImage}
+              />
+            </div>
+          ))}
         </div>
       </section>
     </>

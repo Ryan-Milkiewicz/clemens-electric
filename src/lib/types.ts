@@ -61,6 +61,19 @@ export interface Category {
   category: string;
 }
 
+export interface Post {
+  _id: string;
+  title: string;
+  slug: string;
+  date: Date;
+  excerpt: string;
+  coverImage: CustomImage;
+}
+
 export interface CustomImage extends Image {
   alt: string;
+}
+
+export interface FullPost extends Post {
+  content: PortableTextBlock[];
 }

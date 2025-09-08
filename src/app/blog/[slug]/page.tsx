@@ -11,16 +11,16 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getBlogPost(slug);
+  const { title, coverImage, content, date } = await getBlogPost(slug);
 
   return (
     <section className="container py-5">
-      <h2 className="fw-bold redUnderline mb-2">{post[0].title}</h2>
+      <h2 className="fw-bold redUnderline mb-2">{title}</h2>
       <h6
         className="text-muted text-center my-3"
         style={{ fontStyle: "italic" }}
       >
-        <DateComponent dateString={post[0].date} />
+        <DateComponent dateString={date.toString()} />
       </h6>
       <div>
         <div
@@ -28,15 +28,15 @@ export default async function Page({
           style={{ maxWidth: "553px" }}
         >
           <Image
-            src={urlFor(post[0].coverImage).width(553).height(252).url()}
-            alt={post[0].coverImage.alt}
+            src={urlFor(coverImage).width(553).height(252).url()}
+            alt={coverImage.alt}
             width={553}
             height={252}
             className="rounded shadow-sm"
             style={{ height: "auto", width: "100%" }}
           />
         </div>
-        <PortableText value={post[0].content} />
+        <PortableText value={content} />
 
         <Link href="/contact">
           <button className="btn rounded-5 buttonColor">Contact Us</button>

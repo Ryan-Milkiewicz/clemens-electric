@@ -1,7 +1,8 @@
 import Link from "next/link";
 import DateComponent from "./Date";
+import type { Post } from "@/lib/types";
 
-const Post = ({ post }: { post: any }) => {
+const Post = ({ post }: { post: Post }) => {
   const { _id, title, slug, excerpt, date } = post;
 
   return (
@@ -21,7 +22,7 @@ const Post = ({ post }: { post: any }) => {
       </div>
       <div className="card-footer text-center">
         <small className="text-body-secondary">
-          <DateComponent dateString={date} />
+          <DateComponent dateString={date.toString()} />
         </small>
       </div>
     </article>
@@ -41,10 +42,10 @@ const Posts = ({
   </div>
 );
 
-export const AllPosts = ({ data }: { data: any }) => {
+export const AllPosts = ({ data }: { data: Post[] }) => {
   return (
     <Posts heading="Blog Posts">
-      {data.map((post: any) => (
+      {data.map((post: Post) => (
         <Post key={post._id} post={post} />
       ))}
     </Posts>

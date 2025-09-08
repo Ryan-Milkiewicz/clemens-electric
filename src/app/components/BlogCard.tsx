@@ -3,28 +3,27 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import DateComponent from "./Date";
 import Link from "next/link";
+import { CustomImage } from "@/lib/types";
 
 export function BlogCard({
   title,
   slug,
-  //alt,
   excerpt,
   date,
   image,
 }: {
   title: string;
   slug: string;
-  //alt: string;
   excerpt: string;
   date: string;
-  image: string;
+  image: CustomImage;
 }) {
   return (
     <div className="card h-100">
       <div className="imageWrapper">
         <Image
           src={urlFor(image).url()}
-          alt="Clemens Electric"
+          alt={image.alt}
           fill
           style={{ objectFit: "cover" }}
           sizes="(max-width: 768px) 100vw, 400px"

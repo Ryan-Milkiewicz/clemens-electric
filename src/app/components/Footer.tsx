@@ -36,16 +36,14 @@ export function Footer() {
 
             <p>
               {" "}
-              Clemens Electric proudly serves homeowners and businesses with
-              reliable solar, electrical, generator, and EV charging services
-              across the Capital District and beyond. Our service area includes
-              Albany, Troy, Schenectady, Saratoga Springs, Rensselaer, East
-              Greenbush, Colonie, Latham, Clifton Park, Delmar, Slingerlands,
-              Selkirk, Wynantskill, Mechanicville, Cohoes, Watervliet, Hudson,
-              Glens Falls, Queensbury, Lake George, Kingston, Loudonville,
-              Niskayuna, the Hudson Valley, and surrounding communities.
-              Wherever you are in upstate New York, Clemens Electric delivers
-              trusted solutions to keep your home and business powered.
+              Our service area includes Albany, Troy, Schenectady, Saratoga
+              Springs, Rensselaer, East Greenbush, Colonie, Latham, Clifton
+              Park, Delmar, Slingerlands, Selkirk, Wynantskill, Mechanicville,
+              Cohoes, Watervliet, Hudson, Glens Falls, Queensbury, Lake George,
+              Kingston, Loudonville, Niskayuna, the Hudson Valley, and
+              surrounding communities. Wherever you are in upstate New York,
+              Clemens Electric delivers trusted solutions to keep your home and
+              business powered.
             </p>
           </div>
           <div className="col-md-8 ms-auto text-end">

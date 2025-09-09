@@ -11,9 +11,18 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Clemens Electric",
-  description: "Clemens Electric Website",
+export const metadata = {
+  title: "Clemens Electric - Powering Your Solar & Electric Solutions",
+  description:
+    "Clemens Electric powers the Capital District with trusted solar, electrical, generator & EV charging solutions for homes and businesses",
+  openGraph: {
+    title: "Clemens Electric - Powering Your Solar & Electric Solutions",
+    description:
+      "Clemens Electric powers the Capital District with trusted solar, electrical, generator & EV charging solutions for homes and businesses",
+    url: "https://clemenselectric.com",
+    siteName: "Clemens Electric",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

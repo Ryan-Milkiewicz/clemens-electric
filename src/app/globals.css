@@ -1,5 +1,6 @@
 .nav-link {
-  color: red;
+  color: #e21919;
+  font-weight: bold;
   transition: color 0.2s ease-in-out;
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Navbar.module.css";
 
 export function Navbar() {
   return (
@@ -30,67 +29,29 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav d-flex ms-auto">
             <li className="nav-item px-4 py-2">
-              <Link href="/" className={`nav-link ${styles.navLinkStyle}`}>
+              <Link href="/" className="nav-link">
                 Home
               </Link>
             </li>
-            {/* <li className="nav-item dropdown px-4 py-2">
-              <a
-                className={`nav-link dropdown-toggle ${styles.navLinkStyle}`}
-                href="/about-us"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                About
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link
-                    href="/about-us"
-                    className={`dropdown-item ${styles.navLinkStyle}`}
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about-us/faq"
-                    className={`dropdown-item ${styles.navLinkStyle}`}
-                  >
-                    FAQ
-                  </Link>
-                </li>
-              </ul>
-            </li> */}
             <li className="nav-item px-4 py-2">
-              <Link
-                href="/about-us"
-                className={`nav-link ${styles.navLinkStyle}`}
-              >
+              <Link href="/about-us" className="nav-link">
                 About
               </Link>
             </li>
             <li className="nav-item px-4 py-2">
-              <Link
-                href="/services"
-                className={`nav-link ${styles.navLinkStyle}`}
-              >
+              <Link href="/services" className="nav-link">
                 Services
               </Link>
             </li>
             <li className="nav-item px-4 py-2">
-              <Link
-                href="/markets"
-                className={`nav-link ${styles.navLinkStyle}`}
-              >
+              <Link href="/markets" className="nav-link">
                 Markets
               </Link>
             </li>
 
             <li className="nav-item dropdown px-4 py-2">
               <a
-                className={`nav-link dropdown-toggle ${styles.navLinkStyle}`}
+                className="nav-link dropdown-toggle"
                 href="/blog"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -100,31 +61,17 @@ export function Navbar() {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link
-                    href="/blog"
-                    className={`dropdown-item ${styles.navLinkStyle}`}
-                  >
+                  <Link href="/blog" className="nav-link dropdown-item">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/about-us/faq"
-                    className={`dropdown-item ${styles.navLinkStyle}`}
-                  >
+                  <Link href="/about-us/faq" className="nav-link dropdown-item">
                     FAQ
                   </Link>
                 </li>
               </ul>
             </li>
-            {/* <li className="nav-item px-4 py-2">
-              <Link
-                href="#contact"
-                className={`nav-link ${styles.navLinkStyle}`}
-              >
-                Contact
-              </Link>
-            </li> */}
           </ul>
           <div className="ms-3">
             <Link href="/contact">

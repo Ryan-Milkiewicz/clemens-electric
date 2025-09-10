@@ -1,15 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { EmailTemplate } from "@/app/components/EmailTemplate";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const { fullName, email, phoneNumber, address, message } = await req.json();
 
     // Send email via Resend
-    const { data, error } = await resend.emails.send({
+    const data = await resend.emails.send({
       from: process.env.RESEND_TO!,
       to: process.env.RESEND_INBOX!,
       replyTo: [email],
@@ -23,9 +23,6 @@ export async function POST(req: NextRequest) {
       }),
     });
 
-    if (error) {
-      return NextResponse.json({ success: false, error }, { status: 500 });
-    }
     return NextResponse.json({ success: true, data });
   } catch (err: any) {
     return NextResponse.json(

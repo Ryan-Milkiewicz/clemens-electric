@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const { fullName, email, phoneNumber, address, message } = await req.json();
 
     // Send email via Resend
-    const data = await resend.emails.send({
+    const { data } = await resend.emails.send({
       from: process.env.RESEND_TO!,
       to: process.env.RESEND_INBOX!,
       replyTo: [email],

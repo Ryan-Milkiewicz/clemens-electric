@@ -1,60 +1,101 @@
 "use client";
-import { FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
+import { z } from "zod";
+
+const contactFormSchema = z.object({
+  fullName: z.string().min(2, "Full Name is required"),
+  email: z.email("Invalid email address"),
+  phoneNumber: z.string().min(1, "Phone Number is required"),
+  address: z.string().min(1, "Address is required"),
+  message: z.string().optional(),
+});
 
 export default function ContactForm() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    message: "",
+  });
+
+  const [success, setSuccess] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
+    // Validate form with Zod
+    const result = contactFormSchema.safeParse(formData);
 
-    const firstName = data.get("firstName");
-    const lastName = data.get("lastName");
-    const email = data.get("email");
-    const phoneNumber = data.get("phoneNumber");
-    const address = data.get("address");
-    const zipCode = data.get("zipCode");
-    const message = data.get("message");
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      const zodError = result.error.issues;
 
-    // Construct email body
-    const subject = `New Contact Form Submission from ${firstName} ${lastName}`;
-    const body = `
-        Name: ${firstName} ${lastName}
-        Email: ${email}
-        Phone: ${phoneNumber}
-        Address: ${address}
-        Zip Code: ${zipCode}
+      // Get erros from Zod so we can display them
+      zodError.forEach((err) => {
+        const fieldName = err.path[0];
+        if (fieldName) {
+          fieldErrors[fieldName as string] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
 
-        Message:
-        ${message}`;
+    setErrors({});
 
-    // Gmail compose link
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      "Stephenc@clemenselectric.com"
-    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Open Gmail compose in new tab
-    window.open(gmailUrl, "_blank");
+      const result = await res.json();
+      if (result.success) {
+        setSuccess(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          phoneNumber: "",
+          address: "",
+          message: "",
+        });
+        // hide alert after 3 seconds
+        setTimeout(() => setSuccess(false), 3000);
+      } else {
+        setSuccess(false);
+        alert("Failed to send email: " + result.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong.");
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
-        <div className="col-md-6 mb-3">
+        <div className="mb-3">
           <input
             type="text"
-            name="firstName"
+            name="fullName"
             className="form-control"
-            placeholder="First Name"
+            placeholder="Full Name"
+            value={formData.fullName}
+            onChange={handleChange}
           />
         </div>
-        <div className="col-md-6 mb-3">
-          <input
-            type="text"
-            name="lastName"
-            className="form-control"
-            placeholder="Last Name"
-          />
-        </div>
+        {errors.fullName && <p className="text-danger">{errors.fullName}</p>}
       </div>
 
       <div className="mb-3">
@@ -63,7 +104,10 @@ export default function ContactForm() {
           name="email"
           className="form-control"
           placeholder="Email Address"
+          onChange={handleChange}
+          value={formData.email}
         />
+        {errors.email && <p className="text-danger">{errors.email}</p>}
       </div>
 
       <div className="mb-3">
@@ -72,7 +116,12 @@ export default function ContactForm() {
           name="phoneNumber"
           className="form-control"
           placeholder="Phone Number"
+          onChange={handleChange}
+          value={formData.phoneNumber}
         />
+        {errors.phoneNumber && (
+          <p className="text-danger">{errors.phoneNumber}</p>
+        )}
       </div>
 
       <div className="mb-3">
@@ -81,16 +130,10 @@ export default function ContactForm() {
           name="address"
           className="form-control"
           placeholder="Home Address"
+          onChange={handleChange}
+          value={formData.address}
         />
-      </div>
-
-      <div className="mb-3">
-        <input
-          type="text"
-          name="zipCode"
-          className="form-control"
-          placeholder="Zip Code"
-        />
+        {errors.address && <p className="text-danger">{errors.address}</p>}
       </div>
 
       <div className="mb-3">
@@ -99,6 +142,8 @@ export default function ContactForm() {
           name="message"
           className="form-control"
           placeholder="Enter message"
+          onChange={handleChange}
+          value={formData.message}
         ></textarea>
       </div>
 
@@ -109,6 +154,11 @@ export default function ContactForm() {
       >
         Submit
       </button>
+      {success && (
+        <div className="alert alert-success mt-3" role="alert">
+          Email sent successfully!
+        </div>
+      )}
     </form>
   );
 }

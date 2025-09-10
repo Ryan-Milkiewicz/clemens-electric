@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     // Send email via Resend
     const { data } = await resend.emails.send({
       from: process.env.RESEND_TO!,
-      to: process.env.RESEND_INBOX!,
+      to: [process.env.RESEND_INBOX!],
       replyTo: [email],
       subject: "New Info Request",
       react: EmailTemplate({

@@ -3,7 +3,7 @@ type Props = {
   email: string;
   phoneNumber: string;
   address: string;
-  message: string;
+  message?: string;
 };
 
 export const EmailTemplate = ({

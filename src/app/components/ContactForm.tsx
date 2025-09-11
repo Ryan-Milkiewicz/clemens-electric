@@ -1,149 +1,94 @@
 "use client";
-import { useState, ChangeEvent, FormEvent } from "react";
-import { z } from "zod";
-
-const contactFormSchema = z.object({
-  fullName: z.string().min(2, "Full Name is required"),
-  email: z.email("Invalid email address"),
-  phoneNumber: z.string().min(1, "Phone Number is required"),
-  address: z.string().min(1, "Address is required"),
-  message: z.string().optional(),
-});
+import { sendEmail, State } from "@/lib/mail";
+import { useActionState } from "react";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    message: "",
-  });
+  const initialState: State = { message: null, errors: {} };
+  const [state, formAction, isLoading] = useActionState(
+    sendEmail,
+    initialState
+  );
 
-  const [success, setSuccess] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Validate form with Zod
-    const result = contactFormSchema.safeParse(formData);
-
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      const zodError = result.error.issues;
-
-      // Get erros from Zod so we can display them
-      zodError.forEach((err) => {
-        const fieldName = err.path[0];
-        if (fieldName) {
-          fieldErrors[fieldName as string] = err.message;
-        }
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setErrors({});
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await res.json();
-      if (result.success) {
-        setSuccess(true);
-        setFormData({
-          fullName: "",
-          email: "",
-          phoneNumber: "",
-          address: "",
-          message: "",
-        });
-        // hide alert after 3 seconds
-        setTimeout(() => setSuccess(false), 3000);
-      } else {
-        setSuccess(false);
-        alert("Failed to send email: " + result.error);
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong.");
-    }
-  };
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={formAction}>
       <div className="row">
         <div className="mb-3">
           <input
+            id="fullName"
             type="text"
             name="fullName"
             className="form-control"
             placeholder="Full Name"
-            value={formData.fullName}
-            onChange={handleChange}
+            defaultValue=""
           />
         </div>
-        {errors.fullName && <p className="text-danger">{errors.fullName}</p>}
+        {state?.errors?.fullName &&
+          state.errors.fullName.map((error: string) => (
+            <p className="text-danger" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
 
       <div className="mb-3">
         <input
+          id="email"
           type="email"
           name="email"
           className="form-control"
           placeholder="Email Address"
-          onChange={handleChange}
-          value={formData.email}
+          defaultValue=""
         />
-        {errors.email && <p className="text-danger">{errors.email}</p>}
+        {state?.errors?.email &&
+          state.errors.email.map((error: string) => (
+            <p className="text-danger" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
 
       <div className="mb-3">
         <input
+          id="phoneNumber"
           type="text"
           name="phoneNumber"
           className="form-control"
           placeholder="Phone Number"
-          onChange={handleChange}
-          value={formData.phoneNumber}
+          defaultValue=""
         />
-        {errors.phoneNumber && (
-          <p className="text-danger">{errors.phoneNumber}</p>
-        )}
+        {state?.errors?.phoneNumber &&
+          state.errors.phoneNumber.map((error: string) => (
+            <p className="text-danger" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
 
       <div className="mb-3">
         <input
+          id="address"
           type="text"
           name="address"
           className="form-control"
           placeholder="Home Address"
-          onChange={handleChange}
-          value={formData.address}
+          defaultValue=""
         />
-        {errors.address && <p className="text-danger">{errors.address}</p>}
+        {state?.errors?.address &&
+          state.errors.address.map((error: string) => (
+            <p className="text-danger" key={error}>
+              {error}
+            </p>
+          ))}
       </div>
 
       <div className="mb-3">
         <textarea
+          id="message"
           rows={8}
           name="message"
           className="form-control"
           placeholder="Enter message"
-          onChange={handleChange}
-          value={formData.message}
+          defaultValue=""
         ></textarea>
       </div>
 
@@ -151,12 +96,20 @@ export default function ContactForm() {
         type="submit"
         className="btn"
         style={{ backgroundColor: "#e21919", color: "white" }}
+        disabled={isLoading}
       >
-        Submit
+        {isLoading ? "Sending..." : "Submit"}
       </button>
-      {success && (
+
+      {state.status === "success" && (
         <div className="alert alert-success mt-3" role="alert">
-          Email sent successfully!
+          {state.message}
+        </div>
+      )}
+
+      {state.message && state.status === "error" && (
+        <div className="alert alert-danger mt-3" role="alert">
+          {state.message}
         </div>
       )}
     </form>

@@ -39,8 +39,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://www.schema.org",
+    "@type": "Electrician",
+    name: "Clemens Electric",
+    url: "https://www.clemenselectric.com/",
+    description:
+      "Clemens Electric powers the Capital District with trusted solar, electrical, generator & EV charging solutions for homes and businesses",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "54 First Dyke Road, Unit 2",
+      addressLocality: "Averill Park",
+      addressRegion: "NY",
+      postalCode: "12018",
+      addressCountry: "US",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+1-518-617-1016",
+      contactType: "Customer Service",
+      areaServed: "US",
+      availableLanguage: "English",
+    },
+  };
   return (
     <html lang="en">
+      <head>
+        <title>
+          Clemens Electric - Powering Your Solar & Electric Solutions
+        </title>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={montserrat.className}>
         <BootstrapClient />
         <Navbar />

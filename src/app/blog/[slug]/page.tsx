@@ -28,12 +28,12 @@ export default async function Page({
           style={{ maxWidth: "553px" }}
         >
           <Image
-            src={urlFor(coverImage).width(553).height(252).url()}
+            src={urlFor(coverImage).width(553).url()}
             alt={coverImage.alt}
             width={553}
-            height={252}
+            height={400} // approximate, doesn't crop
             className="rounded shadow-sm"
-            style={{ height: "auto", width: "100%" }}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
         <PortableText value={content} />

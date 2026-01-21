@@ -6,7 +6,7 @@ const Post = ({ post }: { post: Post }) => {
   const { _id, title, slug, excerpt, date } = post;
 
   return (
-    <article key={_id} className="card">
+    <article key={_id} className="card m-2">
       <div className="card-body">
         <h4 className="card-title fw-bold">{title}</h4>
         <p className="card-text">{excerpt}</p>

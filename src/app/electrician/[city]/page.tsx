@@ -40,22 +40,26 @@ export default async function ElectricianCityPage({ params }: Props) {
   const cityName = formatCity(city);
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <section className="container py-5">
       <h1 className="text-3xl font-bold">
         Electrician in {cityName}, NY – Residential & Commercial Electrical
         Services
       </h1>
-
       <p className="mt-4">
         If you’re looking for a licensed, local electrician in {cityName}, NY,
         Clemens Electric provides professional residential and commercial
-        electrical services throughout the Capital Region.
+        electrical services throughout the Capital Region. From small repairs to
+        full electrical upgrades, our team delivers safe, code-compliant work
+        you can trust.
       </p>
-
+      <p className="mt-4">
+        We understand local permitting requirements, utility coordination, and
+        New York State electrical code — so your project is done right the first
+        time.
+      </p>
       <h2 className="text-xl font-semibold mt-6">
         Our Electrical Services in {cityName}, NY
       </h2>
-
       <ul className="list-disc ml-6 mt-2">
         <li>Residential electrical repairs & troubleshooting</li>
         <li>Electrical panel upgrades & service replacements</li>
@@ -64,6 +68,31 @@ export default async function ElectricianCityPage({ params }: Props) {
         <li>Commercial electrical installations</li>
         <li>Code corrections & safety upgrades</li>
       </ul>
-    </div>
+      <p className="mt-4">
+        Whether you’re upgrading an older home or adding new electrical loads,
+        we tailor solutions to your property and future needs.
+      </p>
+      <h2 className="text-xl font-semibold mt-6">
+        Why Choose a Local Electrician in {cityName}, NY?
+      </h2>
+      <ul className="list-disc ml-6 mt-2">
+        <li>Licensed & insured New York electrician</li>
+        <li>Familiar with local inspectors & AHJs</li>
+        <li>Clean, professional job sites</li>
+        <li>Clear pricing & honest recommendations</li>
+        <li>Responsive scheduling & communication</li>
+      </ul>
+      <h2 className="text-xl font-semibold mt-6">
+        Serving Homes & Businesses Near You
+      </h2>
+      <p className="mt-4">
+        We proudly serve homeowners and businesses throughout {cityName} and
+        surrounding areas, providing fast response times and dependable service.
+      </p>
+      <p className="mt-4">
+        📞 Call today for an estimate or to schedule service with a trusted
+        electrician in {cityName}, NY.
+      </p>
+    </section>
   );
 }

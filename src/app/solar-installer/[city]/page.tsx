@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cities } from "@/lib/cities";
 import { formatCity } from "@/util/helper";
 
@@ -36,6 +37,19 @@ export default async function SolarInstallerCityPage({ params }: Props) {
       <h1 className="text-3xl font-bold">
         Solar Panel Installation in {cityName}, NY
       </h1>
+      <div
+        className="w-100 mb-3 me-md-3 float-md-start rounded p-3"
+        style={{ maxWidth: "553px" }}
+      >
+        <Image
+          src="/solar-install.jpg"
+          alt="Solar Panel"
+          width={553}
+          height={400}
+          className="rounded shadow-sm"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <p className="mt-4">
         Looking to reduce your electric bills and invest in clean energy?
         Clemens Electric offers professional solar panel installation in{" "}

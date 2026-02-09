@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cities } from "@/lib/cities";
 import { formatCity } from "@/util/helper";
 
@@ -36,6 +37,19 @@ export default async function EVChargeCityPage({ params }: Props) {
       <h1 className="text-3xl font-bold">
         EV Charger Installation in {cityName}, NY
       </h1>
+      <div
+        className="w-100 mb-3 me-md-3 float-md-start rounded p-3"
+        style={{ maxWidth: "553px" }}
+      >
+        <Image
+          src="/ev-install.jpg"
+          alt="EV Charger Installer"
+          width={553}
+          height={400}
+          className="rounded shadow-sm"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <p className="mt-4">
         Clemens Electric provides EV charger installation in {cityName}, NY for
         homeowners and businesses looking for safe, fast, and future-proof

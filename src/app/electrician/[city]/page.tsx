@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cities } from "@/lib/cities";
 import { formatCity } from "@/util/helper";
 
@@ -37,6 +38,19 @@ export default async function ElectricianCityPage({ params }: Props) {
         Electrician in {cityName}, NY – Residential & Commercial Electrical
         Services
       </h1>
+      <div
+        className="w-100 mb-3 me-md-3 float-md-start rounded p-3"
+        style={{ maxWidth: "553px" }}
+      >
+        <Image
+          src="/electric-install.jpg"
+          alt="Electric Installer"
+          width={553}
+          height={400} // approximate, doesn't crop
+          className="rounded shadow-sm"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <p className="mt-4">
         If you’re looking for a licensed, local electrician in {cityName}, NY,
         Clemens Electric provides professional residential and commercial

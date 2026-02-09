@@ -1,4 +1,5 @@
 import { cities } from "@/lib/cities";
+import { formatCity } from "@/util/helper";
 
 type Props = {
   params: Promise<{ city: string }>;
@@ -23,15 +24,6 @@ export async function generateMetadata({
     title: `Electrician in ${cityName}, NY | Clemens Electric`,
     description: `Licensed electrician serving ${cityName}, NY. Residential and commercial electrical services.`,
   };
-}
-
-// move this to utils
-function formatCity(citySlug: string) {
-  return citySlug
-    .replace("-ny", "")
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
 }
 
 export default async function ElectricianCityPage({ params }: Props) {

@@ -72,7 +72,15 @@ export function Footer() {
       <div className="w-100 text-center py-2 border-top border-dark">
         <p className="mb-0 small">
           © {new Date().getFullYear()} Clemens Electric. All rights reserved.
-          Developed by <span className="fw-bold">RM Web Solutions</span>.
+          Developed by{" "}
+          <Link
+            href="https://rmwebsolutions.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fw-bold"
+          >
+            RM Web Solutions
+          </Link>
         </p>
       </div>
     </footer>

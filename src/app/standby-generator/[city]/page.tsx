@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cities } from "@/lib/cities";
 import { formatCity } from "@/util/helper";
 
@@ -36,6 +37,19 @@ export default async function StandbyGeneratorCityPage({ params }: Props) {
       <h1 className="text-3xl font-bold">
         Standby Generator Installation in {cityName}, NY
       </h1>
+      <div
+        className="w-100 mb-3 me-md-3 float-md-start rounded p-3"
+        style={{ maxWidth: "550px" }}
+      >
+        <Image
+          src="/generator-install.jpg"
+          alt="Generator Install"
+          width={550}
+          height={400}
+          className="rounded shadow-sm"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
       <p className="mt-4">
         Power outages are common in Upstate New York. Clemens Electric offers
         standby generator installation in {cityName}, NY, providing automatic

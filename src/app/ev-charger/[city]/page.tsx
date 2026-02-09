@@ -26,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ElectricianCityPage({ params }: Props) {
+export default async function EVChargeCityPage({ params }: Props) {
   const { city } = await params;
 
   const cityName = formatCity(city);

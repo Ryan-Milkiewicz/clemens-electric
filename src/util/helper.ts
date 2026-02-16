@@ -8,10 +8,6 @@ export function formatCity(citySlug: string) {
     .join(" ");
 }
 
-// export function replaceCity(content: string, city: string) {
-//   return content.replace(/{{city}}/g, city);
-// }
-
 export function replaceCity(
   content: PortableTextBlock[],
   city: string,

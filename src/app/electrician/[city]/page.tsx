@@ -32,7 +32,7 @@ export async function generateMetadata({
 
 export default async function ElectricianCityPage({ params }: Props) {
   const { city } = await params;
-  const { _id, pageType, content, image } = await getDynamicPage("electrician");
+  const { content, image } = await getDynamicPage("electrician");
 
   const cityName = formatCity(city);
   const updatedContent = replaceCity(content, cityName);

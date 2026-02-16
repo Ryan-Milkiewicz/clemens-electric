@@ -1,42 +1,81 @@
 import type { MetadataRoute } from "next";
+import { cities } from "@/lib/cities";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const baseUrl = "https://clemenselectric.com";
+
+  const staticPages: MetadataRoute.Sitemap = [
     {
-      url: "https://clemenselectric.com",
+      url: `${baseUrl}`,
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://clemenselectric/about-us",
+      url: `${baseUrl}/about-us`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://clemenselectric/services",
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://clemenselectric/markets",
+      url: `${baseUrl}/markets`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://clemenselectric/about-us/faq",
+      url: `${baseUrl}/about-us/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://clemenselectric/contact",
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
+  ];
+
+  const electricianPages: MetadataRoute.Sitemap = cities.map((city) => ({
+    url: `${baseUrl}/electrician/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  const evChargerPages: MetadataRoute.Sitemap = cities.map((city) => ({
+    url: `${baseUrl}/ev-charger/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  const solarInstallerPages: MetadataRoute.Sitemap = cities.map((city) => ({
+    url: `${baseUrl}/solar-installer/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  const standbyGeneratorPages: MetadataRoute.Sitemap = cities.map((city) => ({
+    url: `${baseUrl}/standby-generator/${city.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages,
+    ...electricianPages,
+    ...evChargerPages,
+    ...solarInstallerPages,
+    ...standbyGeneratorPages,
   ];
 }

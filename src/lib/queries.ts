@@ -2,6 +2,7 @@ import { client } from "@/sanity/client";
 import {
   HeroSection,
   AboutSection,
+  DynamicPages,
   ServiceSection,
   MarketSection,
   FAQSection,
@@ -11,6 +12,7 @@ import {
 import {
   HERO_QUERY,
   ABOUT_QUERY,
+  DYNAMIC_PAGE_QUERY,
   SERVICE_QUERY,
   MARKET_QUERY,
   FAQ_Query,
@@ -51,4 +53,12 @@ export async function getBlogPost(slug: string) {
 
 export async function getAllBlogPosts() {
   return await client.fetch<Post[]>(ALL_BLOG_POST_QUERY, {}, options);
+}
+
+export async function getDynamicPage(pageType: string) {
+  return await client.fetch<DynamicPages>(
+    DYNAMIC_PAGE_QUERY,
+    { pageType },
+    options,
+  );
 }

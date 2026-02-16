@@ -43,3 +43,11 @@ export const BLOG_POST_QUERY = defineQuery(`
 export const ALL_BLOG_POST_QUERY = defineQuery(
   `*[_type == 'post']| order(date desc){ _id, title, excerpt, "slug":slug.current, date }`,
 );
+
+export const DYNAMIC_PAGE_QUERY =
+  defineQuery(`*[_type == 'dynamic-city-pages' && pageType == $pageType][0]{
+  _id,
+  pageType,
+  image,
+  content
+}`);

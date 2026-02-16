@@ -77,3 +77,10 @@ export interface CustomImage extends Image {
 export interface FullPost extends Post {
   content: PortableTextBlock[];
 }
+
+export interface DynamicPages {
+  _id: string;
+  pageType: string;
+  image: CustomImage;
+  content: PortableTextBlock[];
+}

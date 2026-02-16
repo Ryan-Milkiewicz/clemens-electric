@@ -18,6 +18,7 @@ export const cities = [
   { name: "Loudonville", slug: "loudonville-ny" },
 
   // Rensselaer County
+  { name: "Averill Park", slug: "averill-park-ny" },
   { name: "Troy", slug: "troy-ny" },
   { name: "Rensselaer", slug: "rensselaer-ny" },
   { name: "Brunswick", slug: "brunswick-ny" },

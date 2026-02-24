@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Montserrat } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
@@ -79,7 +80,18 @@ export default function RootLayout({
         <Navbar />
         {children}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
-        <GoogleTagManager gtmId="AW-17958553008" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17958553008"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17958553008');
+          `}
+        </Script>
         <Footer />
       </body>
     </html>

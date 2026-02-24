@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Montserrat } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
@@ -79,7 +79,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
-        <GoogleAnalytics gaId="AW-17958553008" />
+        <GoogleTagManager gtmId="AW-17958553008" />
         <Footer />
       </body>
     </html>

@@ -1,5 +1,5 @@
-import { getServices, getServicesBySlug } from "@/lib/queries";
 import Image from "next/image";
+import { getServices, getServicesBySlug } from "@/lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { PortableText } from "@portabletext/react";
 
@@ -38,37 +38,23 @@ export default async function Page({ params }: Props) {
 
   return (
     <section className="container py-5">
-      <div className="row mb-5">
-        <div className="col-12">
-          <h1 className="fw-bold redUnderline display-6">{title}</h1>
-        </div>
+      <h1 className="fw-bold redUnderline display-6 mb-4">{title}</h1>
+
+      <div
+        className="float-md-start me-4 mb-3 rounded overflow-hidden shadow"
+        style={{ width: "100%", maxWidth: "450px", aspectRatio: "4/3" }}
+      >
+        <Image
+          className="object-fit-cover"
+          src={urlFor(image).width(600).url()}
+          alt={image.alt}
+          width={600}
+          height={600}
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
 
-      <div className="row g-5 align-items-start">
-        <div className="col-12 col-md-5">
-          <div className="position-sticky" style={{ top: "2rem" }}>
-            <div
-              className="rounded overflow-hidden shadow"
-              style={{ aspectRatio: "4/3" }}
-            >
-              <Image
-                className="object-fit-cover"
-                src={urlFor(image).width(600).url()}
-                alt={image.alt}
-                width={600}
-                height={600}
-                style={{ width: "100%", height: "100%" }}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="col-12 col-md-7">
-          <div className="prose" style={{ maxWidth: "65ch" }}>
-            <PortableText value={content} />
-          </div>
-        </div>
-      </div>
+      <PortableText value={content} />
     </section>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export async function Navbar() {
+  // fetch the services to populate the dropdown menu in the navbar
   const services = await getServices();
 
   return (

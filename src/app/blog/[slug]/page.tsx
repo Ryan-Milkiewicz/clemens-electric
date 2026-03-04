@@ -23,15 +23,19 @@ export default async function Page({
         <DateComponent dateString={date.toString()} />
       </h6>
       <div>
-        <div
+        {/* <div
           className="w-100 mb-3 me-md-3 float-md-start rounded shadow-sm"
           style={{ maxWidth: "553px" }}
+        > */}
+        <div
+          className="float-md-start me-4 mb-3 rounded overflow-hidden shadow"
+          style={{ width: "100%", maxWidth: "450px", aspectRatio: "4/3" }}
         >
           <Image
             src={urlFor(coverImage).width(553).url()}
             alt={coverImage.alt}
             width={553}
-            height={400} // approximate, doesn't crop
+            height={400}
             className="rounded shadow-sm"
             style={{ width: "100%", height: "auto" }}
           />

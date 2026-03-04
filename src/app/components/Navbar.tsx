@@ -1,8 +1,11 @@
-import React from "react";
+import { getServices } from "@/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Navbar() {
+export async function Navbar() {
+  // fetch the services to populate the dropdown menu in the navbar
+  const services = await getServices();
+
   return (
     <nav className="navbar bg-body-tertiary navbar-expand-sm ">
       <div className="container">
@@ -38,10 +41,28 @@ export function Navbar() {
                 About
               </Link>
             </li>
-            <li className="nav-item px-4 py-2">
-              <Link href="/services" className="nav-link">
+            <li className="nav-item dropdown px-4 py-2">
+              <a
+                className="nav-link dropdown-toggle"
+                href="/services"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Services
-              </Link>
+              </a>
+              <ul className="dropdown-menu">
+                {services.map((service) => (
+                  <li key={service.slug}>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="nav-link dropdown-item"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
             <li className="nav-item px-4 py-2">
               <Link href="/markets" className="nav-link">

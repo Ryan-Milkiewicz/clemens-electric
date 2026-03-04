@@ -3,7 +3,7 @@ import {
   HeroSection,
   AboutSection,
   DynamicPages,
-  ServiceSection,
+  Services,
   MarketSection,
   FAQSection,
   Post,
@@ -14,6 +14,7 @@ import {
   ABOUT_QUERY,
   DYNAMIC_PAGE_QUERY,
   SERVICE_QUERY,
+  GET_SERVICE_BY_SLUG,
   MARKET_QUERY,
   FAQ_Query,
   LATEST_BLOG_POSTS_QUERY,
@@ -31,8 +32,12 @@ export async function getAboutSection() {
   return await client.fetch<AboutSection>(ABOUT_QUERY, {}, options);
 }
 
-export async function getServicesSection() {
-  return await client.fetch<ServiceSection>(SERVICE_QUERY, {}, options);
+export async function getServices() {
+  return await client.fetch<Services[]>(SERVICE_QUERY, {}, options);
+}
+
+export async function getServicesBySlug(slug: string) {
+  return await client.fetch<Services>(GET_SERVICE_BY_SLUG, { slug }, options);
 }
 
 export async function getMarketsSection() {

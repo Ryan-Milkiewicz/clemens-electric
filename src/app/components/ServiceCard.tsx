@@ -18,12 +18,12 @@ export function ServiceCard({ service }: { service: Services }) {
         />
       </div>
 
-      <div className="card-body d-flex flex-column">
+      {/* <div className="card-body d-flex flex-column">
         <h5 className="card-title">{service.title}</h5>
         <div className="card-text">
           <PortableText value={service.description} />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

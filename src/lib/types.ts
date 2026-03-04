@@ -16,13 +16,6 @@ export interface AboutSection {
   image: Image;
 }
 
-export interface ServiceSection {
-  _id: string;
-  title: string;
-  subtitle: string;
-  services: Services[];
-}
-
 export interface MarketSection {
   _id: string;
   title: string;
@@ -37,10 +30,13 @@ export interface FAQSection {
 }
 
 export interface Services {
+  _id: string;
   slug: string;
   title: string;
-  description: PortableTextBlock[];
+  pageTitle: string;
+  seoContent: string;
   image: CustomImage;
+  content: PortableTextBlock[];
 }
 
 export interface Markets {

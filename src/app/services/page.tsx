@@ -1,24 +1,25 @@
-import { getServicesSection } from "../../lib/queries";
+//import { getServicesSection } from "../../lib/queries";
 import { ServiceCard } from "../components/ServiceCard";
 
 export default async function Page() {
-  const { _id, title, subtitle, services } = await getServicesSection();
+  // const { title, subtitle, services } = await getServicesSection();
 
   return (
-    <section className="container py-5">
-      <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
-        <h2 className="fw-bold redUnderline">{title}</h2>
-        <p className="pt-3 text-muted">{subtitle}</p>
-      </div>
-      <div className="container">
-        <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-          {services.map((service) => (
-            <div className="col" key={service.slug}>
-              <ServiceCard service={service} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <section className="containter py-5"></section>
+    // <section className="container py-5">
+    //   <div className="mx-auto text-center" style={{ maxWidth: "600px" }}>
+    //     <h2 className="fw-bold redUnderline">{title}</h2>
+    //     <p className="pt-3 text-muted">{subtitle}</p>
+    //   </div>
+    //   <div className="container">
+    //     <div className="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+    //       {services.map((service) => (
+    //         <div className="col" key={service.slug}>
+    //           <ServiceCard service={service} />
+    //         </div>
+    //       ))}
+    //     </div>
+    //   </div>
+    // </section>
   );
 }

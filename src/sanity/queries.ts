@@ -11,7 +11,7 @@ export const ABOUT_QUERY = defineQuery(
 
 export const SERVICE_QUERY = defineQuery(
   `*[
-  _type == "service"]{"slug":slug.current}`,
+  _type == "service"]{title, "slug":slug.current}`,
 );
 
 export const GET_SERVICE_BY_SLUG = defineQuery(

@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
 import { cities } from "@/lib/cities";
+import { getServices } from "@/lib/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://clemenselectric.com";
+
+  const services = await getServices();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -13,12 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/about-us`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -42,6 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
   ];
+
+  const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
   const electricianPages: MetadataRoute.Sitemap = cities.map((city) => ({
     url: `${baseUrl}/electrician/${city.slug}`,
@@ -73,6 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticPages,
+    ...servicePages,
     ...electricianPages,
     ...evChargerPages,
     ...solarInstallerPages,

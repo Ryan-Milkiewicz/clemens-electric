@@ -37,19 +37,20 @@ export default async function Page({ params }: Props) {
   const { title, image, content } = await getServicesBySlug(slug);
 
   return (
-    <section className="container py-5">
+    <section className="container pb-5 py-5" style={{ overflow: "hidden" }}>
       <h1 className="fw-bold redUnderline mb-4">{title}</h1>
       <div>
         <div
           className="mb-3 me-md-4 float-md-start rounded overflow-hidden shadow-sm"
-          style={{ maxWidth: "800px" }}
+          style={{ maxWidth: "600px", aspectRatio: "3/4" }}
         >
           <Image
-            src={urlFor(image).width(800).url()}
+            src={urlFor(image).width(600).url()}
             alt={image.alt}
-            width={800}
-            height={525}
-            style={{ width: "100%", height: "auto" }}
+            width={600}
+            height={450}
+            className="object-fit-cover"
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
         <PortableText value={content} />

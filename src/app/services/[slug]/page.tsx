@@ -38,23 +38,22 @@ export default async function Page({ params }: Props) {
 
   return (
     <section className="container py-5">
-      <h1 className="fw-bold redUnderline display-6 mb-4">{title}</h1>
-
-      <div
-        className="float-md-start me-4 mb-3 rounded overflow-hidden shadow"
-        style={{ width: "100%", maxWidth: "450px", aspectRatio: "4/3" }}
-      >
-        <Image
-          className="object-fit-cover"
-          src={urlFor(image).width(600).url()}
-          alt={image.alt}
-          width={600}
-          height={600}
-          style={{ width: "100%", height: "100%" }}
-        />
+      <h1 className="fw-bold redUnderline mb-4">{title}</h1>
+      <div>
+        <div
+          className="mb-3 me-md-4 float-md-start rounded overflow-hidden shadow-sm"
+          style={{ maxWidth: "800px" }}
+        >
+          <Image
+            src={urlFor(image).width(800).url()}
+            alt={image.alt}
+            width={800}
+            height={525}
+            style={{ width: "100%", height: "auto" }}
+          />
+        </div>
+        <PortableText value={content} />
       </div>
-
-      <PortableText value={content} />
     </section>
   );
 }

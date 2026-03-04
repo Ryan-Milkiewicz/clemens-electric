@@ -24,15 +24,16 @@ export default async function Page({
       </h6>
       <div>
         <div
-          className="w-100 mb-3 me-md-3 float-md-start rounded shadow-sm"
-          style={{ maxWidth: "553px" }}
+          className="mb-3 me-md-4 float-md-start rounded overflow-hidden shadow-sm"
+          style={{
+            maxWidth: "700px",
+          }}
         >
           <Image
-            src={urlFor(coverImage).width(553).url()}
+            src={urlFor(coverImage).width(700).url()}
             alt={coverImage.alt}
-            width={553}
-            height={400}
-            className="rounded shadow-sm"
+            width={700}
+            height={525}
             style={{ width: "100%", height: "auto" }}
           />
         </div>

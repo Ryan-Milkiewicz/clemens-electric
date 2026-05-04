@@ -1,7 +1,6 @@
 import { getServices } from "@/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./Navbar.module.css";
 
 export async function Navbar() {
   // fetch the services to populate the dropdown menu in the navbar

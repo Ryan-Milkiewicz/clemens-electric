@@ -96,7 +96,9 @@ export async function Navbar() {
           </ul>
           <div className="ms-3">
             <Link href="/contact">
-              <button className="btn rounded-5 buttonColor">Contact Us</button>
+              <button className="btn rounded-5 buttonColor contact-btn">
+                Contact Us
+              </button>
             </Link>
           </div>
         </div>

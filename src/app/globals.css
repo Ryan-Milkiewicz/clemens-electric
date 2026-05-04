@@ -15,17 +15,26 @@
 .buttonColor {
   background-color: #e21919;
   color: white;
+  border: 2px solid transparent;
+}
+
+.buttonColor:hover {
+  background-color: white;
+  color: #e21919;
+  border: 2px solid #e21919;
 }
 
 .alternateButtonColor {
   background-color: white;
   color: #e21919;
-  border: 5px solid transparent; /* keeps size consistent */
-  transition: all 0.3s ease; /* smooth animation */
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .alternateButtonColor:hover {
-  border-color: #e21919;
+  background-color: #e21919;
+  color: white;
+  border: 2px solid white;
 }
 
 .imageWrapper {

@@ -3,6 +3,8 @@ import { getHeaderSection, getTop3BlogPosts } from "../lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { BlogCard } from "./components/BlogCard";
 import { Post } from "@/lib/types";
+import Link from "next/link";
+import styles from "./components/Footer.module.css";
 
 export default async function Home() {
   const { _id, headerTitle, altText, image } = await getHeaderSection();
@@ -10,8 +12,8 @@ export default async function Home() {
 
   return (
     <>
-      <section className="position-relative">
-        <div key={_id}>
+      <section>
+        <div className="position-relative" key={_id}>
           <Image
             style={{ objectFit: "cover", width: "100%" }}
             src={urlFor(image).width(966).height(646).url()}
@@ -29,6 +31,55 @@ export default async function Home() {
             style={{ color: "white" }}
           >
             <h1 className="fw-bold">{headerTitle}</h1>
+          </div>
+        </div>
+
+        <div
+          className={`w-100 text-white py-5 border-bottom border-dark border-3 ${styles.footerText}`}
+        >
+          <div className="d-flex justify-content-center align-items-center gap-4">
+            <h3 className="text-white fw-bold mb-0">
+              Built on trust. Backed by experience.
+            </h3>
+            <Link
+              href="https://www.ibew236.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/IBEW-Logo.png"
+                height={85}
+                width={250}
+                alt="IBEW Logo"
+                style={{ height: "100px", width: "auto", marginRight: "-32px" }}
+              />
+            </Link>
+            <Link
+              href="https://www.nabcep.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/NABCEP.png"
+                height={85}
+                width={250}
+                alt="NABCEP Logo"
+                style={{ height: "100px", width: "auto" }}
+              />
+            </Link>
+            <Link
+              href="https://www.nabcep.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/NABCEP-PV-Seal.webp"
+                height={85}
+                width={250}
+                alt="NABCEP PV Seal"
+                style={{ height: "100px", width: "auto" }}
+              />
+            </Link>
           </div>
         </div>
       </section>

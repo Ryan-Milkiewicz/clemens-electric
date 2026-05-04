@@ -1,6 +1,7 @@
 import { getServices } from "@/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./Navbar.module.css";
 
 export async function Navbar() {
   // fetch the services to populate the dropdown menu in the navbar
@@ -96,7 +97,9 @@ export async function Navbar() {
           </ul>
           <div className="ms-3">
             <Link href="/contact">
-              <button className="btn rounded-5 buttonColor">Contact Us</button>
+              <button className="btn rounded-5 buttonColor contact-btn">
+                Contact Us
+              </button>
             </Link>
           </div>
         </div>

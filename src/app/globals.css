@@ -13,8 +13,18 @@
 }
 
 .buttonColor {
+  /* background-color: #e21919;
+  color: white; */
   background-color: #e21919;
   color: white;
+  border: 2px solid transparent !important;
+  /* transition: all 0.2s ease; */
+}
+
+.buttonColor:hover {
+  background-color: white !important;
+  color: #e21919;
+  border: 2px solid #e21919 !important;
 }
 
 .alternateButtonColor {

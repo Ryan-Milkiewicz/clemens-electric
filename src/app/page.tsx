@@ -52,6 +52,7 @@ export default async function Home() {
                 width={250}
                 alt="IBEW Logo"
                 style={{ height: "100px", width: "auto", marginRight: "-32px" }}
+                priority
               />
             </Link>
             <Link
@@ -65,6 +66,7 @@ export default async function Home() {
                 width={250}
                 alt="NABCEP Logo"
                 style={{ height: "100px", width: "auto" }}
+                priority
               />
             </Link>
             <Link
@@ -78,6 +80,7 @@ export default async function Home() {
                 width={250}
                 alt="NABCEP PV Seal"
                 style={{ height: "100px", width: "auto" }}
+                priority
               />
             </Link>
           </div>

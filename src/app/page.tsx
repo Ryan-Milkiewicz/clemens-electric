@@ -8,7 +8,7 @@ import styles from "./components/Footer.module.css";
 import Carousel from "./components/Carousel";
 
 export default async function Home() {
-  const { _id, headerTitle, altText, image } = await getHeaderSection();
+  const { _id, headerTitle, images } = await getHeaderSection();
   const blogData = await getTop3BlogPosts();
 
   return (
@@ -16,133 +16,11 @@ export default async function Home() {
       <section>
         <Carousel
           headerTitle={headerTitle}
-          image={urlFor(image).width(966).height(646).url()}
-          altText={altText}
+          imageUrls={images.map((img) => ({
+            url: urlFor(img).width(966).height(646).url(),
+            alt: img.alt ?? "",
+          }))}
         />
-        {/* <div
-          id="carouselExample"
-          className="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            {[0, 1, 2].map((index) => (
-              <div
-                className={`carousel-item position-relative ${index === 0 ? "active" : ""}`}
-                key={index}
-              >
-                <Image
-                  style={{ objectFit: "cover", width: "100%" }}
-                  src={urlFor(image).width(966).height(646).url()}
-                  alt={altText}
-                  width={966}
-                  height={646}
-                  priority={index === 0}
-                />
-                <div
-                  className="position-absolute top-0 start-0 w-100 h-100"
-                  style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-                />
-                <div
-                  className="position-absolute top-50 start-50 translate-middle text-center"
-                  style={{ color: "white" }}
-                >
-                  <h1 className="fw-bold">{headerTitle}</h1>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div> */}
-
-        {/* Add this back once we have more images */}
-        {/* <div id="carouselExample" className="carousel slide">
-          <div className="carousel-inner">
-            {slides.map(({ _id, image, altText, headerTitle }, index) => (
-              <div
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
-                key={_id}
-              >
-                <Image
-                  style={{ objectFit: "cover", width: "100%" }}
-                  src={urlFor(image).width(966).height(646).url()}
-                  alt={altText}
-                  width={966}
-                  height={646}
-                  priority={index === 0}
-                />
-                <div
-                  className="position-absolute top-0 start-0 w-100 h-100"
-                  style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-                />
-                <div
-                  className="position-absolute top-50 start-50 translate-middle text-center"
-                  style={{ color: "white" }}
-                >
-                  <h1 className="fw-bold">{headerTitle}</h1>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="visually-hidden">Previous</span>
-          </button>
-
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div> */}
-        {/* <div className="position-relative" key={_id}>
-          <Image
-            style={{ objectFit: "cover", width: "100%" }}
-            src={urlFor(image).width(966).height(646).url()}
-            alt={altText}
-            width={966}
-            height={646}
-            priority
-          />
-          <div
-            className="position-absolute top-0 start-0 w-100 h-100"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-          />
-          <div
-            className="position-absolute top-50 start-50 translate-middle text-center"
-            style={{ color: "white" }}
-          >
-            <h1 className="fw-bold">{headerTitle}</h1>
-          </div>
-        </div> */}
 
         <div
           className={`w-100 text-white py-5 border-bottom border-dark border-3 ${styles.footerText}`}

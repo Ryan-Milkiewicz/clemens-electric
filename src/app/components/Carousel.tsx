@@ -4,11 +4,10 @@ import { useEffect } from "react";
 
 type Props = {
   headerTitle: string;
-  image: string;
-  altText: string;
+  imageUrls: { url: string; alt: string }[];
 };
 
-export default function Carousel({ headerTitle, image, altText }: Props) {
+export default function Carousel({ headerTitle, imageUrls }: Props) {
   useEffect(() => {
     const init = async () => {
       const { Carousel } = await import("bootstrap");
@@ -16,7 +15,7 @@ export default function Carousel({ headerTitle, image, altText }: Props) {
       if (el) {
         new Carousel(el, {
           ride: "carousel",
-          interval: 3000,
+          interval: 5000,
         });
       }
     };
@@ -29,15 +28,15 @@ export default function Carousel({ headerTitle, image, altText }: Props) {
       data-bs-ride="carousel"
     >
       <div className="carousel-inner">
-        {[0, 1, 2].map((index) => (
+        {imageUrls.map(({ url, alt }, index) => (
           <div
             className={`carousel-item position-relative ${index === 0 ? "active" : ""}`}
             key={index}
           >
             <Image
               style={{ objectFit: "cover", width: "100%" }}
-              src={image}
-              alt={altText}
+              src={url}
+              alt={alt}
               width={966}
               height={646}
               priority={index === 0}

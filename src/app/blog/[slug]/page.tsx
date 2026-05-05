@@ -4,6 +4,7 @@ import { urlFor } from "@/sanity/sanityImageUrl";
 import { PortableText } from "@portabletext/react";
 import DateComponent from "@/app/components/Date";
 import { getBlogPost } from "@/lib/queries";
+import { portableTextComponents } from "@/app/components/PortableTextComponent";
 
 export default async function Page({
   params,
@@ -35,9 +36,10 @@ export default async function Page({
             width={700}
             height={525}
             style={{ width: "100%", height: "auto" }}
+            priority
           />
         </div>
-        <PortableText value={content} />
+        <PortableText value={content} components={portableTextComponents} />
 
         <Link href="/contact">
           <button className="btn rounded-5 buttonColor">Contact Us</button>

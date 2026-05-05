@@ -43,15 +43,15 @@ export default async function Page({ params }: Props) {
       <div>
         <div
           className="mb-3 me-md-4 float-md-start rounded overflow-hidden shadow-sm"
-          style={{ maxWidth: "600px", aspectRatio: "3/4" }}
+          style={{ maxWidth: "380px", width: "100%" }}
         >
           <Image
-            src={urlFor(image).width(600).url()}
+            src={urlFor(image).width(380).url()}
             alt={image.alt}
-            width={600}
-            height={450}
-            className="object-fit-cover"
-            style={{ width: "100%", height: "100%" }}
+            width={380}
+            height={280}
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+            priority
           />
         </div>
         <PortableText value={content} components={portableTextComponents} />

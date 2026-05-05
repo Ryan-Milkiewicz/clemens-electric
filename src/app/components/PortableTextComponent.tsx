@@ -3,21 +3,21 @@ import type { PortableTextComponents } from "@portabletext/react";
 export const portableTextComponents: PortableTextComponents = {
   block: {
     h1: ({ children }) => (
-      <h1 className="fw-bold mt-5 mb-3 border-bottom pb-2">{children}</h1>
+      <h1 className="fw-bold mt-4 mb-2 border-bottom pb-2">{children}</h1>
     ),
     h2: ({ children }) => (
       <>
-        <hr className="my-5" />
-        <h2 className="fw-bold mb-3" style={{ fontSize: "1.6rem" }}>
+        <hr className="my-3" />
+        <h2 className="fw-bold mb-1" style={{ fontSize: "1.6rem" }}>
           {children}
         </h2>
       </>
     ),
     h3: ({ children }) => (
       <>
-        <hr className="my-5" />
+        <hr className="my-3" />
         <h3
-          className="fw-bold mt-4 mb-2 ps-3"
+          className="fw-bold mt-2 mb-1 ps-3"
           style={{
             color: "#e21919",
             borderLeft: "3px solid #e21919",
@@ -27,26 +27,26 @@ export const portableTextComponents: PortableTextComponents = {
         </h3>
       </>
     ),
-    h4: ({ children }) => <h4 className="fw-semibold mt-3 mb-2">{children}</h4>,
+    h4: ({ children }) => <h4 className="fw-semibold mt-2 mb-1">{children}</h4>,
     normal: ({ children }) => (
-      <p className="mb-3" style={{ lineHeight: "1.8", fontSize: "1.05rem" }}>
+      <p className="mb-2" style={{ lineHeight: "1.5", fontSize: "1.05rem" }}>
         {children}
       </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="blockquote border-start border-danger border-3 ps-3 my-4 text-muted">
+      <blockquote className="blockquote border-start border-danger border-3 ps-3 my-3 text-muted">
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="mb-3 ps-4" style={{ lineHeight: "1.8" }}>
+      <ul className="mb-1 ps-4" style={{ lineHeight: "1.5" }}>
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="mb-3 ps-4" style={{ lineHeight: "1.8" }}>
+      <ol className="mb-1 ps-4" style={{ lineHeight: "1.5" }}>
         {children}
       </ol>
     ),

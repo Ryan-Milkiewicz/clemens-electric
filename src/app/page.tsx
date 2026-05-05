@@ -48,8 +48,8 @@ export default async function Home() {
             >
               <Image
                 src="/IBEW-Logo.png"
-                height={85}
-                width={250}
+                height={100}
+                width={100}
                 alt="IBEW Logo"
                 style={{ height: "100px", width: "auto" }}
                 priority
@@ -62,8 +62,8 @@ export default async function Home() {
             >
               <Image
                 src="/NABCEP.png"
-                height={85}
-                width={250}
+                height={100}
+                width={100}
                 alt="NABCEP Logo"
                 style={{ height: "100px", width: "auto" }}
                 priority
@@ -76,8 +76,8 @@ export default async function Home() {
             >
               <Image
                 src="/NABCEP-PV-Seal.webp"
-                height={85}
-                width={250}
+                height={100}
+                width={100}
                 alt="NABCEP PV Seal"
                 style={{ height: "100px", width: "auto" }}
                 priority

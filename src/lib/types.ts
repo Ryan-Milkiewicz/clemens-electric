@@ -4,8 +4,7 @@ import type { PortableTextBlock } from "next-sanity";
 export interface HeroSection {
   _id: string;
   headerTitle: string;
-  altText: string;
-  image: Image;
+  images: CustomImage[];
 }
 
 export interface AboutSection {

@@ -1,7 +1,14 @@
 import { defineQuery } from "next-sanity";
 
 export const HERO_QUERY = defineQuery(
-  `*[_type == "hero-section"][0]{_id, headerTitle,altText,image}`,
+  `*[_type == "hero-section"][0]{
+  _id,
+  headerTitle,
+  images[]{
+    asset->,
+    alt
+  }
+}`,
 );
 
 export const ABOUT_QUERY = defineQuery(

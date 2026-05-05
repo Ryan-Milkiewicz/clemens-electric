@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useEffect } from "react";
 
 type Props = {
   headerTitle: string;
@@ -8,19 +7,6 @@ type Props = {
 };
 
 export default function Carousel({ headerTitle, imageUrls }: Props) {
-  useEffect(() => {
-    const init = async () => {
-      const { Carousel } = await import("bootstrap");
-      const el = document.getElementById("carouselExample");
-      if (el) {
-        new Carousel(el, {
-          ride: "carousel",
-          interval: 5000,
-        });
-      }
-    };
-    init();
-  }, []);
   return (
     <div
       id="carouselExample"

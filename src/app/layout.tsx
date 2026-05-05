@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import { BootstrapClient } from "./components/BootstrapClientWrapper";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -76,9 +75,12 @@ export default function RootLayout({
         />
       </head>
       <body className={montserrat.className}>
-        <BootstrapClient />
         <Navbar />
         {children}
+        <Script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          strategy="beforeInteractive"
+        />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17958553008"

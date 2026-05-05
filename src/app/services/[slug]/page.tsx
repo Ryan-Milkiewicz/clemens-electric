@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getServices, getServicesBySlug } from "@/lib/queries";
 import { urlFor } from "@/sanity/sanityImageUrl";
 import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "@/app/components/PortableTextComponent";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -53,7 +54,7 @@ export default async function Page({ params }: Props) {
             style={{ width: "100%", height: "100%" }}
           />
         </div>
-        <PortableText value={content} />
+        <PortableText value={content} components={portableTextComponents} />
       </div>
     </section>
   );

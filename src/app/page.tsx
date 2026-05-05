@@ -37,7 +37,7 @@ export default async function Home() {
         <div
           className={`w-100 text-white py-5 border-bottom border-dark border-3 ${styles.footerText}`}
         >
-          <div className="d-flex justify-content-center align-items-center gap-4">
+          <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4">
             <h3 className="text-white fw-bold mb-0">
               Built on trust. Backed by experience.
             </h3>
@@ -51,7 +51,7 @@ export default async function Home() {
                 height={85}
                 width={250}
                 alt="IBEW Logo"
-                style={{ height: "100px", width: "auto", marginRight: "-32px" }}
+                style={{ height: "100px", width: "auto" }}
                 priority
               />
             </Link>
